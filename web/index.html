@@ -682,7 +682,8 @@
     const rest = LAYERS.filter((n) => n !== "base");
     const yes = rest.filter((n) => can.has(n)), no = rest.filter((n) => !can.has(n));
     $("follow-note").textContent =
-      `— ตามได้: ${yes.join(", ") || "ไม่มี"} (มีปุ่มที่อยู่เฉพาะ layer นั้น) · ตามไม่ได้: ${no.join(", ") || "ไม่มี"} ` +
+      "— เปลี่ยนตอนกดปุ่มแรกบน layer นั้น ไม่ใช่ตอนกด thumb (ปุ่ม layer ไม่ส่งอะไรออกจากคีย์บอร์ด) · " +
+      `ตามได้: ${yes.join(", ") || "ไม่มี"} · ตามไม่ได้: ${no.join(", ") || "ไม่มี"} ` +
       "(ส่งค่าที่ browser มองไม่เห็น หรือแยกจาก base ไม่ออก)";
   }
 
