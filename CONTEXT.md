@@ -19,7 +19,7 @@ The third nice!nano, in a dock, that both Halves connect to and that alone talks
 _Avoid_: receiver, hub, dock
 
 **Layer**:
-One complete assignment of behaviours across all 70 Binding Slots, active only while its thumb key is held (or, for `adjust`, while two are). This keymap has five: `base`, `game`, `nav`, `mouse`, `adjust`. Higher-numbered Layers win where they overlap; a slot a Layer leaves transparent shows the Layer below.
+One complete assignment of behaviours across all 70 Binding Slots. This keymap has five: `base`, `game`, `nav`, `mouse`, `adjust`. `base` is always on; `nav` and `mouse` are on while their thumb key is held, `adjust` while both are, and `game` is a Mode. Higher-numbered Layers win where they overlap; a slot a Layer leaves transparent shows the Layer below.
 
 **Mode**:
 A Layer that is switched on by a toggle and stays on until toggled off, rather than held. There is one: `game`. What is on is shown on the Dongle's screen, never remembered. See [ADR-0003](./docs/adr/0003-game-is-a-toggled-overlay.md).
