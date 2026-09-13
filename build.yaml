@@ -1,27 +1,37 @@
 # Firmware matrix for GitHub Actions.
 #
-# drift_left / drift_right      - Production Firmware, what you type on.
-# drift_test_left / _right      - Test Firmware, flashed only to check the board,
-#                                 then replaced. See docs/adr/0001. It reuses the
-#                                 shields and only swaps the keymap, via ZMK's
-#                                 KEYMAP_FILE cache variable. `base_dir` is the env
-#                                 var build-user-config exports for the west
-#                                 workspace root, which holds a copy of config/.
+# This is a dongle build: the dongle is the central, both halves are peripherals,
+# and the keymap lives on the dongle alone. Changing the keymap therefore means
+# reflashing drift_central_dongle only — the halves are untouched.
+#
+# drift_central_dongle  - Production Firmware for the dongle, with ZMK Studio.
+# drift_test_dongle     - Test Firmware for the dongle: same shields, keymap
+#                         swapped via ZMK's KEYMAP_FILE cache variable, so all 70
+#                         binding slots and all four encoder directions send a
+#                         distinct keycode. Flash it to check the board, then put
+#                         drift_central_dongle back. See docs/adr/0001.
+#                         `base_dir` is the env var build-user-config exports for
+#                         the west workspace root, which holds a copy of config/.
+# drift_left/right      - peripheral firmware, only needed on a fresh build or
+#                         after a settings reset.
 ---
 include:
-  - board: nice_nano_v2
-    shield: drift_left
-  - board: nice_nano_v2
-    shield: drift_right
+  - board: nice_nano//zmk
+    shield: drift_central_dongle dongle_display
+    snippet: studio-rpc-usb-uart
+    artifact-name: drift_central_dongle
 
-  - board: nice_nano_v2
-    shield: drift_left
+  - board: nice_nano//zmk
+    shield: drift_central_dongle dongle_display
     cmake-args: -DKEYMAP_FILE=${base_dir}/config/drift_test.keymap
-    artifact-name: drift_test_left
-  - board: nice_nano_v2
-    shield: drift_right
-    cmake-args: -DKEYMAP_FILE=${base_dir}/config/drift_test.keymap
-    artifact-name: drift_test_right
+    artifact-name: drift_test_dongle
 
-  - board: nice_nano_v2
+  - board: nice_nano//zmk
+    shield: drift_left
+    artifact-name: drift_left
+  - board: nice_nano//zmk
+    shield: drift_right
+    artifact-name: drift_right
+
+  - board: nice_nano//zmk
     shield: settings_reset

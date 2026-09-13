@@ -1,14 +1,16 @@
-// Drift V3 (Timception) - macOS keymap
-// Based on the upstream Timception/zmk-config-drift-v3-editor default keymap.
+// Drift V3 (Timception) dongle build - macOS keymap
+// Based on the upstream Timception/drift-v3-dongle default keymap.
 //
 // Differences from upstream, all macOS-driven:
 //   * Copy/Paste use LG() (Command) instead of LC() (Control).
-//   * The 2u cap engraved "Shift" on the left outer column is LSHFT (upstream had LGUI there).
+//   * The 2u cap engraved "Shift" on the left outer column is LSHFT (upstream had LGUI).
 //   * Command (LGUI) moved to the outer left thumb, where macOS shortcuts are most comfortable.
-//   * The cap engraved "Shift" on the right bottom row is RSHFT (upstream had RALT).
+//   * The cap engraved "Shift" on the right bottom row is RSHFT (upstream had BACKSPACE).
 //   * "Pgup"/"Pgdn" caps on the left outer column now actually send PG_UP / PG_DN.
 //   * Windows snipping tool shortcut replaced with macOS screenshot shortcuts on the lower layer.
 //   * Lower layer adds LC(SPACE) for macOS input-source switching (Thai <-> English).
+//
+// Kept from upstream: the &kpad / &kpws last-input-priority behaviours on WASD.
 
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 120   // default: 10 - for encoder mouse-scroll to work
@@ -42,6 +44,20 @@
             bindings = <&msc>, <&msc>;
             tap-ms = <20>;
         };
+
+        /* Setup left and right */
+        kpad: key_lip_a_d {
+            compatible = "zmk,behavior-key-press-lip";
+            #binding-cells = <1>;
+            keycodes = <A D>;
+        };
+
+        /* Setup up and down */
+        kpws: key_lip_w_s {
+            compatible = "zmk,behavior-key-press-lip";
+            #binding-cells = <1>;
+            keycodes = <W S>;
+        };
     };
 
     keymap {
@@ -58,11 +74,11 @@
             //                                    | ⌘   | SPC | LOWER |             |RAISE| SPC | BSPC |
 
             bindings = <
-&kp ESC    &kp PG_UP  &kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5                              &kp N6  &kp N7     &kp N8     &kp N9   &kp N0    &kp MINUS  &kp EQUAL  &kp BSPC
-&kp LG(C)  &kp PG_DN  &kp TAB    &kp Q   &kp W   &kp E   &kp R   &kp T                               &kp Y   &kp U      &kp I      &kp O    &kp P     &kp LBKT   &kp RBKT   &kp BSLH
-           &kp LSHFT  &kp CAPS   &kp A   &kp S   &kp D   &kp F   &kp G                               &kp H   &kp J      &kp K      &kp L    &kp SEMI  &kp SQT    &kp ENTER
-&kp LG(V)  &kp LCTRL  &kp LALT   &kp Z   &kp X   &kp C   &kp V   &kp B   &kp C_MUTE      &kp C_MUTE  &kp N   &kp M      &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT  &kp RGUI   &kp DEL
-                                                 &kp LGUI  &kp SPACE  &mo LOWER                      &mo RAISE  &kp SPACE  &kp BSPC
+&kp ESC    &kp PG_UP  &kp GRAVE  &kp N1   &kp N2   &kp N3  &kp N4  &kp N5                              &kp N6  &kp N7     &kp N8     &kp N9   &kp N0    &kp MINUS  &kp EQUAL  &kp BSPC
+&kp LG(C)  &kp PG_DN  &kp TAB    &kp Q    &kpws W  &kp E   &kp R   &kp T                               &kp Y   &kp U      &kp I      &kp O    &kp P     &kp LBKT   &kp RBKT   &kp BSLH
+           &kp LSHFT  &kp CAPS   &kpad A  &kpws S  &kpad D &kp F   &kp G                               &kp H   &kp J      &kp K      &kp L    &kp SEMI  &kp SQT    &kp ENTER
+&kp LG(V)  &kp LCTRL  &kp LALT   &kp Z    &kp X    &kp C   &kp V   &kp B   &kp C_MUTE      &kp C_MUTE  &kp N   &kp M      &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT  &kp RGUI   &kp DEL
+                                                   &kp LGUI  &kp SPACE  &mo LOWER                      &mo RAISE  &kp SPACE  &kp BSPC
             >;
 
             sensor-bindings = <&enc_scroll SCRL_UP SCRL_DOWN>, <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -78,11 +94,11 @@
             // |                                                                   |            | LEFT | DOWN | RIGHT               |
 
             bindings = <
-&bootloader     &kp LG(LS(N4))  &kp GRAVE      &kp F1  &kp F2  &kp F3  &kp F4  &kp F5                              &kp F6   &kp F7   &kp F8   &kp F9   &kp F10  &kp F11       &kp F12        &kp DEL
-&kp LG(LS(N5))  &kp LG(LS(N3))  &trans         &trans  &trans  &trans  &trans  &trans                              &trans   &trans   &trans   &trans   &trans   &kp LG(LEFT)  &kp LG(RIGHT)  &trans
-                &trans          &kp LC(SPACE)  &trans  &trans  &trans  &trans  &trans                              &trans   &trans   &trans   &trans   &trans   &trans        &kp UP
-&trans          &trans          &trans         &trans  &trans  &trans  &trans  &trans  &kp C_MUTE      &kp C_MUTE  &trans   &trans   &trans   &trans   &trans   &kp LEFT      &kp DOWN       &kp RIGHT
-                                                        &trans  &trans  &trans                                     &trans   &trans   &kp DEL
+&bootloader     &kp LG(LS(N4))  &kp GRAVE      &kp F1  &kp F2  &kp F3  &kp F4  &kp F5                              &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &kp F11       &kp F12        &kp DEL
+&kp LG(LS(N5))  &kp LG(LS(N3))  &trans         &trans  &trans  &trans  &trans  &trans                              &trans  &trans  &trans  &trans  &trans   &kp LG(LEFT)  &kp LG(RIGHT)  &trans
+                &trans          &kp LC(SPACE)  &trans  &trans  &trans  &trans  &trans                              &trans  &trans  &trans  &trans  &trans   &trans        &kp UP
+&trans          &trans          &trans         &trans  &trans  &trans  &trans  &trans  &kp C_MUTE      &kp C_MUTE  &trans  &trans  &trans  &trans  &trans   &kp LEFT      &kp DOWN       &kp RIGHT
+                                                        &trans  &trans  &trans                                     &trans  &trans  &kp DEL
             >;
 
             sensor-bindings = <&enc_scroll SCRL_UP SCRL_DOWN>, <&inc_dec_kp C_VOL_UP C_VOL_DN>;

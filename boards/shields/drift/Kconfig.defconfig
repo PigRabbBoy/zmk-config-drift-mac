@@ -1,17 +1,14 @@
-if SHIELD_drift_LEFT
+if SHIELD_DRIFT_CENTRAL_DONGLE
 
 config ZMK_KEYBOARD_NAME
-    default "Drift V3"
+    default "Drift V3 Dongle"
 
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
 endif
 
-if SHIELD_drift_LEFT || SHIELD_drift_RIGHT
 
-config ZMK_SPLIT
-    default y
 
 if ZMK_DISPLAY
 
@@ -21,7 +18,13 @@ config I2C
 config SSD1306
     default y
 
-endif # ZMK_DISPLAY
+choice ZMK_DISPLAY_WORK_QUEUE
+    default ZMK_DISPLAY_WORK_QUEUE_DEDICATED
+endchoice
+
+endif
+
+
 
 if LVGL
 
@@ -38,12 +41,13 @@ choice LV_COLOR_DEPTH
     default LV_COLOR_DEPTH_1
 endchoice
 
-endif # LVGL
-
-if ZMK_RGB_UNDERGLOW
-
-config WS2812_STRIP
-    default y
 endif
+
+
+
+if SHIELD_DRIFT_LEFT || SHIELD_DRIFT_RIGHT || SHIELD_DRIFT_CENTRAL_DONGLE || SHIELD_DRIFT_LEFT_CENTRAL
+
+config ZMK_SPLIT
+    default y
 
 endif

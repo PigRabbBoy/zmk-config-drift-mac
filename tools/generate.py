@@ -57,7 +57,8 @@ CODES = {
     "LBKT": "BracketLeft", "RBKT": "BracketRight", "BSLH": "Backslash",
     "SEMI": "Semicolon", "SQT": "Quote", "COMMA": "Comma", "DOT": "Period",
     "FSLH": "Slash", "TAB": "Tab", "CAPS": "CapsLock", "ESC": "Escape",
-    "SPACE": "Space", "BSPC": "Backspace", "DEL": "Delete", "ENTER": "Enter",
+    "SPACE": "Space", "BSPC": "Backspace", "BACKSPACE": "Backspace",
+    "BACKSLASH": "Backslash", "DEL": "Delete", "ENTER": "Enter",
     "RET": "Enter", "PG_UP": "PageUp", "PG_DN": "PageDown", "HOME": "Home",
     "END": "End", "INS": "Insert", "UP": "ArrowUp", "DOWN": "ArrowDown",
     "LEFT": "ArrowLeft", "RIGHT": "ArrowRight", "SLCK": "ScrollLock",
@@ -131,6 +132,11 @@ def describe(binding):
            "code": None, "mods": []}
     behaviour, _, arg = binding.partition(" ")
     arg = arg.strip()
+
+    # &kpad / &kpws are upstream's last-input-priority behaviours on WASD. To a
+    # host they are ordinary key presses, so treat them exactly like &kp.
+    if behaviour in ("&kpad", "&kpws"):
+        behaviour = "&kp"
 
     if behaviour == "&kp":
         mods, inner = [], arg

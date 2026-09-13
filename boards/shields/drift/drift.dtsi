@@ -1,19 +1,17 @@
 // Copyright (c) 2025 Timception
 // SPDX-License-Identifier: MIT
 #include <dt-bindings/zmk/matrix_transform.h>
-//#include <8column.dtsi>
+#include "8column.dtsi"
 
-//&drift_8col_layout {
-//    transform = <&default_transform>;
-//};
-
+&drift_8col_layout {
+    transform = <&default_transform>;
+};
 
 / {
     chosen {
         zephyr,display = &oled;
 		zmk,kscan = &kscan0;
-		//zmk,physical-layout = &drift_8col_layout;
-		zmk,matrix_transform = &default_transform;
+		zmk,physical-layout = &drift_8col_layout;
     };
 
     default_transform: keymap_transform_0 {
@@ -55,8 +53,8 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(3,7) RC(4,7) RC(4,8) 
 		
 		//switch values (0 and 21) when you need to invert this encoder
 		
-        a-gpios = <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        b-gpios = <&pro_micro 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        a-gpios = <&pro_micro 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
 		
         steps = <80>;
         status = "disabled";
@@ -78,25 +76,5 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(3,7) RC(4,7) RC(4,8) 
         compatible = "zmk,keymap-sensors";
         sensors = <&left_encoder &right_encoder>;
         triggers-per-rotation = <20>;
-    };
-};
-
-&pro_micro_i2c {
-    status = "okay";
-
-    oled: ssd1306@3c {
-        compatible = "solomon,ssd1306fb";
-        reg = <0x3c>;
-        width = <128>;
-        height = <32>;
-        segment-offset = <0>;
-        page-offset = <0>;
-        display-offset = <0>;
-        multiplex-ratio = <31>;
-        segment-remap;
-        com-invdir;
-        com-sequential;
-        inversion-on;
-        prechargep = <0x22>;
     };
 };

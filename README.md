@@ -1,8 +1,13 @@
 # Drift V3 — ZMK config for macOS
 
-ZMK config สำหรับ **Drift Keyboard V3 by Timception** (68-key split, nice!nano v2, roller encoder 2 ตัว, OLED 2 จอ) ปรับ keymap ให้ตรงกับ macOS และตรงกับ keycap ที่ติดตั้งอยู่จริง
+ZMK config สำหรับ **Drift Keyboard V3 by Timception** แบบ **dongle** — 68 คีย์ split, nice!nano 3 ตัว
+(dongle 1 + ครึ่งซ้าย/ขวาอย่างละ 1), roller encoder 2 ตัว, OLED บน dongle
+ปรับ keymap ให้ตรงกับ macOS และตรงกับ keycap ที่ติดตั้งอยู่จริง
 
-Fork มาจาก [Timception/zmk-config-drift-v3-editor](https://github.com/Timception/zmk-config-drift-v3-editor)
+Fork มาจาก [Timception/drift-v3-dongle](https://github.com/Timception/drift-v3-dongle)
+
+> **dongle เป็น central** — keymap อยู่บน dongle ตัวเดียว ครึ่งซ้าย/ขวาเป็น peripheral ไม่ถือ keymap
+> แก้ keymap = flash แค่ dongle ไม่ต้องแตะสองครึ่ง
 
 ## ทำไมต้องแก้
 
@@ -13,7 +18,7 @@ Keymap default ของ upstream เขียนไว้สำหรับ Win
 | ซ้าย คอลัมน์นอก แถวบนสุด | `Pgup` | `ESC` | `PG_UP` |
 | ซ้าย คอลัมน์นอก แถว 2 | `Pgdn` | `RS(LG(S))` (Windows snip) | `PG_DN` |
 | ซ้าย 2u แถว home | `Shift` | `LGUI` | `LSHFT` |
-| ขวา ล่าง ก่อน Del | `Shift` | `RALT` | `RSHFT` |
+| ขวา ล่าง ก่อน Del | `Shift` | `BACKSPACE` | `RSHFT` |
 | ขวา ล่าง (cap โบว์) | — | `RCTRL` | `RGUI` (⌘ ขวา) |
 | ซ้าย thumb นอกสุด | — | `LSHFT` | `LGUI` (⌘) |
 | ซ้าย คอลัมน์นอกสุด แถว 2 / แถวล่าง | — | `LC(C)` / `LC(V)` | `LG(C)` / `LG(V)` |
@@ -65,26 +70,33 @@ gh repo create zmk-config-drift-mac --private --source=. --push
 
 โหลด artifact `firmware.zip` จากแท็บ Actions จะได้ 5 ไฟล์:
 
-| ไฟล์ | ใช้ทำอะไร |
-|---|---|
-| `drift_left-nice_nano_v2-zmk.uf2` | Production Firmware ครึ่งซ้าย — ตัวที่ใช้พิมพ์จริง |
-| `drift_right-nice_nano_v2-zmk.uf2` | Production Firmware ครึ่งขวา |
-| `drift_test_left-nice_nano_v2-zmk.uf2` | **Test Firmware** ครึ่งซ้าย — flash เฉพาะตอนตรวจบอร์ด แล้ว flash Production กลับ |
-| `drift_test_right-nice_nano_v2-zmk.uf2` | Test Firmware ครึ่งขวา |
-| `settings_reset-nice_nano_v2-zmk.uf2` | ล้าง setting เมื่อสองครึ่งไม่คุยกัน |
+| ไฟล์ | ลงที่ไหน | เมื่อไหร่ |
+|---|---|---|
+| `drift_central_dongle` | **dongle** | Production Firmware — ตัวที่ใช้พิมพ์จริง เปิด ZMK Studio |
+| `drift_test_dongle` | **dongle** | Test Firmware — เฉพาะตอนตรวจบอร์ด แล้ว flash ตัวบนกลับ |
+| `drift_left` | ครึ่งซ้าย | peripheral — ลงครั้งแรกหรือหลัง settings reset เท่านั้น |
+| `drift_right` | ครึ่งขวา | peripheral — เหมือนกัน |
+| `settings_reset` | ตัวที่มีปัญหา | เมื่อ dongle กับครึ่งไหนไม่คุยกัน |
+
+เปลี่ยน keymap ลงแค่ `drift_central_dongle` พอ
 
 ## Flash
 
-1. ต่อสาย USB-C เข้าครึ่งซ้าย
+1. ต่อสาย USB-C เข้า **dongle**
 2. กดปุ่ม reset บน nice!nano **2 ครั้งเร็วๆ** → จะขึ้น drive ชื่อ `NICENANO`
-3. ลาก `drift_left-*.uf2` ลง drive → บอร์ด reboot เอง
-4. ทำซ้ำกับครึ่งขวาด้วย `drift_right-*.uf2`
+3. ลาก **ไฟล์เดียว** ลง drive → บอร์ด reboot เอง drive หายไปเอง (ปกติ ไม่ใช่ error)
 
-ถ้าสองครึ่งไม่คุยกันหลัง flash: flash `settings_reset-*.uf2` ทั้งสองข้างก่อน แล้วค่อย flash firmware จริงใหม่
+`NICENANO` ไม่ใช่โฟลเดอร์เก็บไฟล์ มันคือช่องรับ firmware — เขียนอะไรลงไป บอร์ดเอาอันนั้น
+ไปทับของเดิมทันที **ห้ามลากหลายไฟล์พร้อมกัน**
+
+ครึ่งซ้าย/ขวาไม่ต้อง flash ตอนเปลี่ยน keymap ถ้าจำเป็นจริงก็ทำแบบเดียวกันทีละข้าง
+ถ้า dongle ไม่เจอครึ่งไหน: flash `settings_reset` ลงทั้ง dongle และครึ่งนั้น แล้ว flash ของจริงกลับ
 
 ## จับคู่กับ Mac
 
-1. บน keyboard: กด RAISE ค้าง แล้วกด `BT CLR` เพื่อล้าง profile เดิม
+dongle เป็นตัวที่คุยกับ Mac (ครึ่งซ้าย/ขวาคุยกับ dongle ไม่ได้คุยกับ Mac โดยตรง)
+
+1. บน keyboard: กด RAISE ค้าง แล้วกด `BT CLR` เพื่อล้าง profile เดิมของ dongle
 2. กด `BT1` (หรือ profile ที่ว่าง)
 3. macOS → System Settings → Bluetooth → เลือก **Drift V3**
 4. ถ้า Keyboard Setup Assistant เด้งขึ้นมาถามให้กดปุ่มข้าง Shift ซ้าย — ปิดไปแล้วเลือก **ANSI** เองที่ System Settings → Keyboard → Change Keyboard Type
@@ -100,7 +112,7 @@ https://pigrabbboy.github.io/zmk-config-drift-mac/
 กดปุ่มจริงแล้วปุ่มบนรูปสว่าง แต่ไม่นับคะแนน เพราะหน้าเว็บไม่มีทางรู้ว่า ZMK อยู่ layer ไหน
 
 **โหมดทดสอบบอร์ด** — ไล่ให้ครบทั้ง 70 สวิตช์ + หมุน encoder 4 ทิศ นับแยกซ้าย/ขวา
-(ครึ่งขวาคุยผ่านครึ่งซ้าย ถ้าหลุดจะตายทั้งครึ่งพร้อมกัน — ตัวเลขแยกทำให้เห็นทันที)
+(แต่ละครึ่งคุยกับ dongle แยกกัน ถ้าครึ่งไหนหลุดจะตายทั้ง 35 ช่องพร้อมกัน — ตัวเลขแยกทำให้เห็นทันที)
 จับปุ่มเด้ง (chatter) ด้วย และจำผลไว้ใน localStorage ข้าม refresh
 
 โหมดนี้**ต้อง flash Test Firmware ก่อน**: Production Firmware มี 4 ช่องที่ browser มองไม่เห็นเลย
@@ -108,8 +120,11 @@ https://pigrabbboy.github.io/zmk-config-drift-mac/
 (`SPACE`, `BSPC`, `C_MUTE`) — `SPACE` คร่อมสองครึ่งบอร์ดด้วย เหตุผลเต็มอยู่ใน
 [ADR-0001](./docs/adr/0001-separate-test-firmware.md)
 
-ขั้นตอน: flash `drift_test_left` / `drift_test_right` → เปิดเว็บโหมดทดสอบ → กดจนครบ →
-**flash `drift_left` / `drift_right` กลับ**
+ขั้นตอน: flash `drift_test_dongle` ลง dongle → เปิดเว็บโหมดทดสอบ → กดจนครบ →
+**flash `drift_central_dongle` กลับ**
+
+Test Firmware ไม่มี `&bootloader` ผูกไว้เลย (70 ช่องเป็น `&kp` ล้วนตามนิยาม) ทางออกทางเดียวคือ
+ปุ่ม reset จริงบน dongle — ซึ่งกดถึงอยู่แล้ว อย่า flash ลงอุปกรณ์ที่กดปุ่ม reset ไม่ถึง
 
 ## Generated files
 
@@ -136,4 +151,6 @@ System Settings → Keyboard → Input Sources → เปิด **Show Input men
 
 - `&kp BSPC` = ปุ่ม delete ปกติของ Mac (⌫), `&kp DEL` = forward delete (Fn+Delete บน Apple keyboard) — keycap `Del` มี 2 ตัวจึงไม่ใช่ใส่ซ้ำ
 - `&kp CAPS` ยังอยู่ตำแหน่งเดิม ถ้าจะใช้สลับภาษาแบบ macOS ให้ไปตั้งที่ System Settings → Keyboard → Input Sources → "Use Caps Lock key to switch..."
-- ZMK Studio (แก้ keymap สดโดยไม่ต้อง build) ยังไม่เปิด — ต้องประกาศ `zmk,physical-layout` ใน `drift.dtsi` ก่อน ซึ่ง upstream comment ไว้อยู่
+- **ZMK Studio เปิดอยู่** (`CONFIG_ZMK_STUDIO=y`, locking ปิด, snippet `studio-rpc-usb-uart`) — ต่อ dongle ด้วยสาย USB แล้วแก้ keymap สดได้โดยไม่ต้อง build
+- เก็บ behavior `&kpad` / `&kpws` ของ upstream ไว้ (last-input-priority บน WASD สำหรับเกม) — host มองเป็นปุ่มธรรมดา
+- OLED บน dongle เปิด `CONFIG_ZMK_DONGLE_DISPLAY_MAC_MODIFIERS=y` อยู่แล้ว แสดงสัญลักษณ์ ⌘ ⌥ ⌃ แบบ Mac

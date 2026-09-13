@@ -2,6 +2,8 @@
 
 To answer "is every switch on this board still working", a browser has to see a distinct event for each of the 70 Binding Slots. Under the Production Firmware it cannot: `&mo LOWER` and `&mo RAISE` emit no HID report at all, `&kp C_MUTE` (both encoder pushes) and the encoder rotations are consumer-page codes the browser never receives, and `&kp SPACE`, `&kp BSPC` and `&kp C_MUTE` each sit on two Binding Slots that produce byte-identical events. We therefore build a second firmware — same shields, `-DKEYMAP_FILE` pointed at a generated `config/drift_test.keymap` — in which all 70 slots plus all four encoder directions emit a distinct plain keycode. Testing means flashing it, running the page to 74/74, and flashing the Production Firmware back.
 
+This is a dongle build, so both of those are a single device: the Dongle is the central and holds the keymap, and the Halves are peripherals that report switch positions and carry no keymap at all. Checking the board is therefore one flash out and one flash back, on the one nice!nano that is already reachable over USB.
+
 ## Considered options
 
 Four ways to keep a single firmware were worked through and rejected together:
@@ -15,6 +17,8 @@ Each of these is a workaround for one symptom of the same cause. Swapping the fi
 
 ## Consequences
 
-Checking the board costs two flashes and a re-pair rather than opening a page — acceptable for something done when a switch is suspected, not daily. The Test Firmware must never be the one left on the board, so the page says so in the mode that requires it. Both firmwares and the web page's key data are emitted by one generator from `config/drift.json`, because a hand-maintained Test Firmware that drifts from the page would report healthy switches as dead — worse than having no page at all.
+Checking the board costs two flashes of the Dongle rather than opening a page — acceptable for something done when a switch is suspected, not daily. The Test Firmware must never be the one left on the board, so the page says so in the mode that requires it.
+
+Nothing in the Test Firmware can put the Dongle back into its bootloader: all 70 slots are plain `&kp`, by definition. The way out is the Dongle's own reset button, which is reachable — that is how it was put into bootloader in the first place. Do not flash the Test Firmware onto a device whose reset button you cannot press. Both firmwares and the web page's key data are emitted by one generator from `config/drift.json`, because a hand-maintained Test Firmware that drifts from the page would report healthy switches as dead — worse than having no page at all.
 
 The keycode set deliberately excludes `F1`–`F12`: on macOS those are media keys unless "Use F1, F2, etc. keys as standard function keys" is on, and a tool that reports twelve dead switches because of a system preference fails in the most dangerous direction. Avoiding them leaves 75 usable codes for 74 slots.
