@@ -125,6 +125,10 @@
 <!-- ───────────── manual ───────────── -->
 <section id="panel-manual">
   <div class="tabs" id="tabs"></div>
+  <label style="display:inline-flex;gap:7px;align-items:center;color:var(--dim);font-size:13px;margin-bottom:4px">
+    <input type="checkbox" id="follow" checked> ตาม layer อัตโนมัติ
+    <span id="follow-note"></span>
+  </label>
   <div class="note" id="manual-note">
     กดปุ่มบนคีย์บอร์ดจริงแล้วปุ่มบนรูปจะสว่าง — <b>ไม่นับคะแนน</b> เพราะหน้าเว็บไม่มีทางรู้ว่า ZMK
     กำลังอยู่ layer ไหน เห็นแต่ผลลัพธ์ที่ออกมา อยากได้ตัวเลขที่เชื่อได้ให้ไปโหมดทดสอบบอร์ด
@@ -135,16 +139,26 @@
 <!-- ───────────── test ───────────── -->
 <section id="panel-test" hidden>
   <div class="note warn">
-    <h3>โหมดนี้ต้อง flash Test Firmware ก่อน ไม่งั้นตัวเลขไม่มีความหมาย</h3>
+    <h3>โหมดนี้ต้อง flash Test Firmware ลง dongle ก่อน ไม่งั้นตัวเลขไม่มีความหมาย</h3>
     Production Firmware มี 4 ช่องที่ browser มองไม่เห็นเลย (encoder push ×2, <code>lower</code>, <code>raise</code>)
-    และมี 3 คู่ที่ส่งค่าเหมือนกันจนแยกไม่ออก Test Firmware ทำให้ทั้ง 70 ช่อง + หมุน encoder 4 ทิศ
-    ส่งค่าไม่ซ้ำกันเลย
+    และมี 3 คู่ที่ส่งค่าเหมือนกันจนแยกไม่ออก (<code>SPACE</code>, <code>BSPC</code>, <code>C_MUTE</code>)
+    Test Firmware ทำให้ทั้ง 70 ช่อง + หมุน encoder 4 ทิศ ส่งค่าไม่ซ้ำกันเลย
     <ol>
-      <li>โหลด <code>firmware.zip</code> จาก GitHub Actions เอา <code>drift_test_left</code> / <code>drift_test_right</code></li>
-      <li>ต่อ USB-C → กด reset บน nice!nano 2 ครั้งเร็วๆ → drive <code>NICENANO</code> โผล่ → ลากไฟล์ลง ทำทั้งสองข้าง</li>
+      <li>โหลด <code>firmware.zip</code> จาก GitHub Actions เอา <code>drift_test_dongle.uf2</code></li>
+      <li>เสียบ USB-C เข้า <b>dongle</b> → กด reset 2 ครั้งเร็วๆ → drive <code>NICENANO</code> โผล่</li>
+      <li>ลาก <b>ไฟล์เดียว</b> ลงไป (บน macOS ใช้ <code>cp -X</code> ถ้าลากผ่าน Terminal) — ครึ่งซ้าย/ขวาไม่ต้องแตะ</li>
       <li>กดให้ครบทุกช่อง หมุน encoder ทั้งสองข้างทั้งสองทิศ</li>
-      <li><b>flash <code>drift_left</code> / <code>drift_right</code> กลับ</b> — อย่าทิ้ง Test Firmware ไว้บนบอร์ด</li>
+      <li><b>flash <code>drift_central_dongle.uf2</code> กลับ</b> — อย่าทิ้ง Test Firmware ไว้บนบอร์ด
+          มันไม่มีปุ่ม bootloader ทางออกเดียวคือปุ่ม reset จริงบน dongle</li>
     </ol>
+  </div>
+
+  <div class="note warn" id="wrong-fw" hidden style="border-left-color:var(--bad)">
+    <h3>ยังเป็น Production Firmware อยู่ — ตัวเลขที่ได้ไม่มีความหมาย</h3>
+    เพิ่งเห็นปุ่มที่ Test Firmware <b>ไม่มีทางส่งออกมาได้</b> (<span id="wrong-fw-code"></span>)
+    แปลว่า dongle ยังไม่ได้ flash <code>drift_test_dongle</code> — ตอนนี้ปุ่มบนรูปจะสว่างผิดตำแหน่ง
+    ทุกปุ่ม และหยุดนับให้แล้ว
+    <p style="margin:8px 0 0"><button class="plain" id="wrong-fw-clear">flash แล้ว — ล้างคำเตือนและเริ่มนับใหม่</button></p>
   </div>
 
   <div class="note warn" id="thai-warn" hidden>
@@ -221,6 +235,38 @@
 
   const lastDown = new Map();
   let sawThai = false;
+  let wrongFirmware = false;
+
+  // ── which layer is the board on? ─────────────────────────────────────────
+  // A layer key emits no HID report, so the only evidence is what comes out
+  // afterwards: a code that exists on exactly one non-base layer and nowhere on
+  // base can only have been produced by that layer being held. F-keys and arrows
+  // give `lower` away; `raise` is almost all BT, media and mouse behaviours,
+  // which a page either never receives or cannot tell from a real mouse, and
+  // `adjust` is entirely invisible. So this follows `lower` and little else —
+  // stated plainly next to the checkbox rather than pretended otherwise.
+  const baseCodes = new Set(D.layers.base.map((b) => b.code).filter(Boolean));
+  const layerHint = new Map();
+  {
+    const owners = new Map();
+    for (const name of Object.keys(D.layers)) {
+      if (name === "base") continue;
+      for (const b of D.layers[name]) {
+        if (!b.code || baseCodes.has(b.code)) continue;
+        if (!owners.has(b.code)) owners.set(b.code, new Set());
+        owners.get(b.code).add(name);
+      }
+    }
+    for (const [code, names] of owners) {
+      if (names.size === 1) layerHint.set(code, [...names][0]);
+    }
+  }
+
+  // Codes the Test Firmware can never emit: it binds no modifiers at all, and
+  // deliberately avoids F1-F12. Seeing one in test mode proves the dongle is
+  // still running the Production Firmware, so every slot would light up wrong.
+  const IMPOSSIBLE_IN_TEST = (code) =>
+    /^(Shift|Control|Alt|Meta)(Left|Right)$/.test(code) || /^F([1-9]|1[0-2])$/.test(code);
 
   // ── build the board ──────────────────────────────────────────────────────
   const maxX = Math.max(...D.layout.map((k) => k.x)) + 1;
@@ -323,7 +369,20 @@
     if (ev.key === "Shift" && !shifted) { shifted = true; paintLegends(); }
     if (THAI.test(ev.key)) { sawThai = true; $("thai-warn").hidden = true; }
 
-    const slot = mode === "test" ? codeToSlot.get(ev.code) : slotOnCurrentLayer(ev.code);
+    if (mode === "test" && !wrongFirmware && IMPOSSIBLE_IN_TEST(ev.code)) {
+      wrongFirmware = true;
+      $("wrong-fw-code").textContent = ev.code;
+      $("wrong-fw").hidden = false;
+    }
+    if (mode === "manual" && $("follow").checked) {
+      const hinted = layerHint.get(ev.code);
+      if (hinted) setLayer(hinted);
+      else if (baseCodes.has(ev.code)) setLayer("base");
+    }
+
+    const slot = mode === "test"
+      ? (wrongFirmware ? null : codeToSlot.get(ev.code))
+      : slotOnCurrentLayer(ev.code);
     if (slot != null && slot >= 0) {
       cells[slot].classList.add("down");
       if (mode === "test") {
@@ -337,7 +396,7 @@
       }
     }
 
-    if (mode === "test") {
+    if (mode === "test" && !wrongFirmware) {
       const enc = encByCode.get(ev.code);
       if (enc) { cov.encoders[enc.enc + ":" + enc.dir] = true; save(); paintStats(); }
     }
@@ -368,7 +427,9 @@
       if (mode === "test") bits.push(`<b>${b.raw}</b> เมื่อ flash Production`);
       else if (b.note) bits.push(b.note);
     } else if (mode === "test") {
-      bits.push("ไม่ตรงกับช่องไหนเลย — flash Test Firmware แล้วหรือยัง");
+      bits.push(wrongFirmware
+        ? "หยุดนับแล้ว — dongle ยังเป็น Production Firmware"
+        : "ไม่ตรงกับช่องไหนเลย — flash Test Firmware แล้วหรือยัง");
     }
     readout.innerHTML = bits.join(" &nbsp;·&nbsp; ");
   }
@@ -378,11 +439,15 @@
     .map((n) => `<button data-layer="${n}" aria-pressed="${n === layer}">${n}</button>`).join("");
   $("tabs").addEventListener("click", (e) => {
     const b = e.target.closest("button");
-    if (!b) return;
-    layer = b.dataset.layer;
-    [...$("tabs").children].forEach((x) => x.setAttribute("aria-pressed", x === b));
-    paintLegends();
+    if (b) setLayer(b.dataset.layer);
   });
+
+  function setLayer(name) {
+    if (name === layer) return;
+    layer = name;
+    [...$("tabs").children].forEach((x) => x.setAttribute("aria-pressed", x.dataset.layer === name));
+    paintLegends();
+  }
 
   function setMode(next) {
     mode = next;
@@ -401,6 +466,17 @@
   $("mode-manual").onclick = () => setMode("manual");
   $("mode-test").onclick = () => setMode("test");
   $("reset").onclick = () => { cov = blank(); lastDown.clear(); save(); paintState(); };
+  $("wrong-fw-clear").onclick = () => {
+    wrongFirmware = false;
+    $("wrong-fw").hidden = true;
+    cov = blank();           // anything counted before this point landed on the wrong slots
+    lastDown.clear();
+    save();
+    paintState();
+  };
+  $("follow").onchange = () => { if (!$("follow").checked) setLayer(layer); };
+  $("follow-note").textContent =
+    "— ตามได้เฉพาะ lower (F1–F12 กับ arrow มีอยู่ layer เดียว) ส่วน raise/adjust เป็น BT/media/mouse ที่ browser มองไม่เห็น";
 
   $("enc-prod").innerHTML = (D.encoders || []).map((e) =>
     `<li><b>${esc(e.label)}</b> — หมุนขึ้น/ตามเข็ม: ${esc(e.cw)} · หมุนลง/ทวนเข็ม: ${esc(e.ccw)}</li>`
