@@ -100,6 +100,27 @@
               padding: 9px 13px; margin-bottom: 7px; }
   ul.enc b { font-weight: 650; }
 
+  /* guide */
+  #guide h2 { margin-top: 34px; }
+  #guide h3 { font-size: 14px; margin: 18px 0 6px; }
+  #guide p { margin: 6px 0; }
+  kbd { font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--key);
+        border: 1px solid var(--key-edge); border-bottom-width: 2px; border-radius: 5px; padding: 1px 6px; white-space: nowrap; }
+  table.chords { border-collapse: collapse; margin-top: 6px; font-size: 13px; }
+  table.chords th, table.chords td { border: 1px solid var(--edge); padding: 6px 10px; text-align: left; vertical-align: top; }
+  table.chords th { color: var(--dim); font-weight: 600; font-size: 12px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; margin-top: 8px; }
+  .card { background: var(--panel); border: 1px solid var(--edge); border-radius: 9px; padding: 10px 13px; }
+  .card h4 { margin: 0 0 6px; font-size: 14px; }
+  .card ul { list-style: none; margin: 0; padding: 0; }
+  .card li { display: flex; gap: 8px; align-items: flex-start; padding: 3px 0; font-size: 13px; }
+  .tag { flex: none; font-size: 10px; text-transform: uppercase; letter-spacing: .05em; border-radius: 4px;
+         padding: 2px 6px; border: 1px solid var(--edge); color: var(--dim); margin-top: 2px; min-width: 62px; text-align: center; }
+  .tag.kb { border-color: var(--accent); color: var(--accent); }
+  .steps ol li { margin: 5px 0; }
+  .steps .revert { color: var(--dim); font-size: 12px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 16px; color: var(--dim); font-size: 12px; margin: 4px 0 8px; }
+
   footer { margin-top: 40px; color: var(--dim); font-size: 12px; border-top: 1px solid var(--edge); padding-top: 14px; }
 </style>
 </head>
@@ -133,6 +154,8 @@
     กดปุ่มบนคีย์บอร์ดจริงแล้วปุ่มบนรูปจะสว่าง — <b>ไม่นับคะแนน</b> เพราะหน้าเว็บไม่มีทางรู้ว่า ZMK
     กำลังอยู่ layer ไหน เห็นแต่ผลลัพธ์ที่ออกมา อยากได้ตัวเลขที่เชื่อได้ให้ไปโหมดทดสอบบอร์ด
     <br>กด <code>⇧ Shift</code> ค้างเพื่อดู legend ชั้นที่สอง
+    <br>ปุ่มที่<b>ไม่มีวันสว่าง</b>ในโหมดนี้: <code>⌃Space</code> (สลับภาษา) กับ <code>⌘Tab</code> — macOS กินไปก่อนถึง browser
+    ไม่ใช่สวิตช์เสีย
   </div>
 </section>
 
@@ -140,8 +163,8 @@
 <section id="panel-test" hidden>
   <div class="note warn">
     <h3>โหมดนี้ต้อง flash Test Firmware ลง dongle ก่อน ไม่งั้นตัวเลขไม่มีความหมาย</h3>
-    Production Firmware มี 4 ช่องที่ browser มองไม่เห็นเลย (encoder push ×2, <code>lower</code>, <code>raise</code>)
-    และมี 3 คู่ที่ส่งค่าเหมือนกันจนแยกไม่ออก (<code>SPACE</code>, <code>BSPC</code>, <code>C_MUTE</code>)
+    Production Firmware มี 5 ช่องที่ browser มองไม่เห็นเลย (encoder push ×2, <code>nav</code>, <code>mouse</code>,
+    และ <code>⌃Space</code> ที่ macOS กินไปก่อน) และมี 2 คู่ที่ส่งค่าเหมือนกันจนแยกไม่ออก (<code>SPACE</code>, <code>BSPC</code>)
     Test Firmware ทำให้ทั้ง 70 ช่อง + หมุน encoder 4 ทิศ ส่งค่าไม่ซ้ำกันเลย
     <ol>
       <li>โหลด <code>firmware.zip</code> จาก GitHub Actions เอา <code>drift_test_dongle.uf2</code></li>
@@ -185,10 +208,160 @@
   <p class="sub" style="margin:0 0 10px">ตัวอักษร ตัวเลข และเครื่องหมายไม่อยู่ในรายการนี้ — legend บนปุ่มบอกครบแล้ว</p>
   <dl class="gloss" id="glossary"></dl>
 
-  <h2>encoder — หมุน</h2>
-  <p class="sub" style="margin:0 0 10px">สองลูกทำคนละหน้าที่ กด encoder ลงไป = ปิด/เปิดเสียง ทั้งสองข้าง</p>
+  <h2>encoder — หมุน บน layer <span id="enc-layer"></span></h2>
+  <p class="sub" style="margin:0 0 10px">หน้าที่ตอนหมุนเปลี่ยนตาม layer ที่กดค้างอยู่ · กดลงไป: ซ้าย = ปิด/เปิดเสียง, ขวา = เล่น/หยุด</p>
   <ul class="enc" id="enc-prod"></ul>
 </section>
+
+<div id="guide">
+<!-- ───────────── modes ───────────── -->
+<section id="modes">
+  <h2>โหมดใช้งาน — ทำงาน / ทั่วไป กับ เกม</h2>
+  <div class="note">
+    <h3>ทำงานและใช้ทั่วไป = <code>base</code></h3>
+    ทุกปุ่มบน base เป็นปุ่มธรรมดา ไม่มี hold-tap ไม่มี combo (พิมพ์ไทยต้องพึ่ง Shift ครึ่งแป้น
+    และหน้าตรวจบอร์ดคิดเป็นช่องต่อช่อง — ดู ADR-0004) · layer อื่นเข้าด้วยการ<b>กดค้าง</b>:
+    thumb ซ้ายใน = <code>nav</code>, thumb ขวาใน = <code>mouse</code>, สองอันพร้อมกัน = <code>adjust</code>
+  </div>
+  <div class="note">
+    <h3>เกม = เปิด <code>game</code> ค้างไว้ด้วย <kbd>nav</kbd> + <kbd>mouse</kbd> + <kbd>G</kbd></h3>
+    <ul>
+      <li>จอ OLED บน dock ขึ้นคำว่า <code>game</code> ตลอดที่เปิดอยู่ — ไม่ต้องเดา · กดชุดเดียวกันอีกครั้งเพื่อปิด</li>
+      <li>เปลี่ยนแค่ 5 ช่อง: <code>W A S D</code> เป็นแบบ last-input-priority (กด A ค้างแล้วกด D = ไปขวาทันที ไม่ค้าง)
+          และ thumb ซ้ายนอก <code>⌘</code> กลายเป็น <code>⌥</code> — เกมบน Mac ใช้ Option/Control/Shift ไม่ใช้ Command
+          และ ⌘ คือตัวการ ⌘Q / ⌘H / ⌘Tab หลุดกลางเกม (<code>R⌘</code> ขวายังอยู่ไว้หนีฉุกเฉิน)</li>
+      <li>ที่เหลือทะลุไป base หมด: <code>nav</code> ยังให้ F1–F12, <code>⌃Space</code> ยังสลับภาษาแชทได้, Space ทั้งสองข้างยังเป็น Space</li>
+      <li>เหตุผลที่เป็น overlay ไม่ใช่ base ที่สอง: ดู ADR-0003</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ───────────── mouseless ───────────── -->
+<section id="mouseless">
+  <h2>ลดการใช้เมาส์</h2>
+  <p class="sub">ครึ่งหนึ่งคีย์บอร์ดทำให้ อีกครึ่งเป็น setting ของ macOS กับ app — แยกป้ายไว้ชัดๆ ว่าอันไหนเป็นของใคร</p>
+  <div class="legend">
+    <span><span class="tag kb">คีย์บอร์ด</span> keymap นี้ส่งให้เอง</span>
+    <span><span class="tag">app</span> shortcut ของ app / macOS เอง กดจากคีย์บอร์ดไหนก็ได้</span>
+  </div>
+
+  <h3>1. ฝั่งคีย์บอร์ด — <code>nav</code> + ลูกศร + modifier จริง</h3>
+  <p>ลูกศรบน <code>nav</code> (<kbd>H</kbd> <kbd>J</kbd> <kbd>K</kbd> <kbd>L</kbd>) เป็นปุ่มลูกศรธรรมดา
+     ดังนั้นกด modifier <b>จริง</b> ค้างร่วมได้เหมือนคีย์บอร์ดปกติ ไม่ต้องจำปุ่มเพิ่ม:</p>
+  <div class="board-scroll"><table class="chords">
+    <tr><th>กดค้างร่วมกับ nav</th><th><kbd>H</kbd> / <kbd>L</kbd></th><th><kbd>J</kbd> / <kbd>K</kbd></th><th>อื่นๆ</th></tr>
+    <tr><td>—</td><td>← →</td><td>↓ ↑</td><td><kbd>Y</kbd> Home · <kbd>U</kbd> PgDn · <kbd>I</kbd> PgUp · <kbd>O</kbd> End</td></tr>
+    <tr><td><kbd>⌥</kbd></td><td>ถอย / ไป ทีละคำ</td><td>ต้น / ท้าย ย่อหน้า</td><td><kbd>⌥</kbd>+<kbd>⌫</kbd> ลบทีละคำ</td></tr>
+    <tr><td><kbd>⌘</kbd></td><td>ต้น / ท้าย บรรทัด</td><td>ต้น / ท้าย เอกสาร</td><td><kbd>⌘</kbd>+<kbd>⌫</kbd> ลบถึงต้นบรรทัด</td></tr>
+    <tr><td><kbd>⇧</kbd> (+ อันไหนก็ได้)</td><td colspan="2">เลือกข้อความตามระยะที่เลื่อน</td><td>เช่น <kbd>⇧</kbd><kbd>⌥</kbd>+<kbd>L</kbd> เลือกหนึ่งคำ</td></tr>
+    <tr><td><kbd>⌃</kbd><kbd>⌥</kbd></td><td>tile หน้าต่าง ซ้าย / ขวา</td><td>tile ล่าง / บน</td><td><kbd>F</kbd> เต็มจอ · <kbd>C</kbd> กลางจอ · <kbd>R</kbd> คืนขนาดเดิม — ต้องตั้ง App Shortcuts ข้อ 2 ก่อน</td></tr>
+  </table></div>
+  <p>มือซ้ายบน <code>nav</code> คือปุ่มจัดการหน้าต่างของ macOS เอง: <kbd>Q</kbd> หน้าต่างถัดไปของ app (⌘`) ·
+     <kbd>W</kbd> Mission Control (⌃↑) · <kbd>E</kbd> สลับไป app ล่าสุด (⌘Tab) · <kbd>A</kbd> / <kbd>D</kbd> ย้าย Space (⌃← ⌃→) ·
+     <kbd>S</kbd> App Exposé (⌃↓) · <kbd>Caps</kbd> Caps Word</p>
+
+  <h3>ฝั่งคีย์บอร์ด — layer <code>mouse</code> (thumb ขวาในค้าง)</h3>
+  <ul>
+    <li><kbd>H</kbd> <kbd>J</kbd> <kbd>K</kbd> <kbd>L</kbd> ขยับเคอร์เซอร์ — แตะสั้นขยับนิดเดียว กดค้างเร่งขึ้นเอง (ยังไม่มี layer ละเอียดแยก ถ้าหยาบไปค่อยเพิ่ม)</li>
+    <li><kbd>Y</kbd> <kbd>U</kbd> <kbd>I</kbd> <kbd>O</kbd> scroll ← ↓ ↑ → ทรงเดียวกับ Home/PgDn/PgUp/End บน nav</li>
+    <li>คลิก: Space ซ้าย = ซ้าย · thumb ⌘ ซ้าย = ขวา · <kbd>F</kbd> = กลาง · กดคลิกค้างแล้วขยับ = ลาก</li>
+    <li><kbd>N</kbd> / <kbd>M</kbd> = ปุ่มเมาส์ 4/5 (Back / Forward ใน browser และ Finder)</li>
+    <li>⌘-click ใช้ <code>R⌘</code> นิ้วก้อยขวา เพราะ thumb ⌘ ซ้ายกลายเป็นคลิกขวาไปแล้ว · ⇧-click / ⌥-click ใช้ปุ่มจริงตามปกติ</li>
+  </ul>
+
+  <h3>ฝั่งคีย์บอร์ด — encoder</h3>
+  <ul>
+    <li><code>base</code>: ซ้ายหมุน = scroll ขึ้น/ลง · ขวาหมุน = เสียง · กดซ้าย = mute · กดขวา = เล่น/หยุด</li>
+    <li><code>nav</code> ค้าง: ซ้ายหมุน = scroll ซ้าย/ขวา · ขวาหมุน = สลับ tab (⌃Tab / ⌃⇧Tab — Arc, Chrome, Safari, Zed, Warp ใช้ได้หมด)</li>
+  </ul>
+
+  <h3>2. ฝั่ง macOS — ตั้งครั้งเดียว (หน้านี้บอกวิธี ไม่ได้ตั้งให้)</h3>
+  <div class="note steps">
+    <h3>2.1 Keyboard navigation (Full Keyboard Access) — Tab ไล่ได้ทุกปุ่มใน dialog</h3>
+    <ol>
+      <li>System Settings › Keyboard › เปิดสวิตช์ <b>Keyboard navigation</b></li>
+      <li>จากนั้น <kbd>Tab</kbd> / <kbd>⇧Tab</kbd> ไล่ focus ได้ทุกปุ่มและช่อง ไม่ใช่แค่ช่องกรอก · <kbd>Space</kbd> = กดปุ่มที่ focus · <kbd>Esc</kbd> = Cancel · <kbd>⏎</kbd> = ปุ่ม default</li>
+      <li>เช็คค่าปัจจุบันได้ด้วย <code>defaults read -g AppleKeyboardUIMode</code> (เครื่องนี้ตอน scan = 0 คือปิดอยู่)</li>
+    </ol>
+    <p class="revert">ย้อนกลับ: ปิดสวิตช์เดิม</p>
+  </div>
+  <div class="note steps">
+    <h3>2.2 App Shortcuts ให้ tile หน้าต่างด้วย ⌃⌥ + ลูกศร</h3>
+    <p>macOS มี tiling ในเมนู <b>Window › Move &amp; Resize</b> อยู่แล้ว แต่ shortcut เดิมเป็น <kbd>fn</kbd><kbd>⌃</kbd>+ลูกศร ซึ่ง ZMK ส่งปุ่ม fn ไม่ได้
+       เลยย้ายมาเป็น <kbd>⌃</kbd><kbd>⌥</kbd> ที่ nav+HJKL ส่งได้:</p>
+    <ol>
+      <li>เปิด Finder แล้วดูเมนู <b>Window › Move &amp; Resize</b> ก่อน — จดชื่อเมนูตามที่เห็นจริงบนเครื่องคุณ (ปกติคือ Left, Right, Top, Bottom, Fill, Center, Return to Previous Size)</li>
+      <li>System Settings › Keyboard › <b>Keyboard Shortcuts…</b> › <b>App Shortcuts</b> › <b>+</b> › Application: <b>All Applications</b></li>
+      <li>เพิ่มทีละรายการ Menu Title สะกดให้ตรงเป๊ะ: <code>Left</code> → <kbd>⌃⌥←</kbd> · <code>Right</code> → <kbd>⌃⌥→</kbd> · <code>Top</code> → <kbd>⌃⌥↑</kbd> · <code>Bottom</code> → <kbd>⌃⌥↓</kbd> · <code>Fill</code> → <kbd>⌃⌥F</kbd> · <code>Center</code> → <kbd>⌃⌥C</kbd> · <code>Return to Previous Size</code> → <kbd>⌃⌥R</kbd></li>
+      <li>ทดสอบ: กด nav ค้าง + <kbd>⌃</kbd><kbd>⌥</kbd> จริง + <kbd>H</kbd> → หน้าต่างไปครึ่งซ้าย</li>
+    </ol>
+    <p class="revert">ย้อนกลับ: เลือกรายการใน App Shortcuts แล้วกด − · ไม่ต้องลง app จัดหน้าต่างเพิ่ม (เครื่องนี้ไม่มี Rectangle/AeroSpace อยู่แล้ว)</p>
+  </div>
+  <div class="note steps">
+    <h3>2.3 Vimium ใน Arc — คลิกลิงก์ด้วยตัวอักษร</h3>
+    <ol>
+      <li>Arc ลง extension จาก Chrome Web Store ได้: ค้น <b>Vimium</b> › Add to Chrome</li>
+      <li><kbd>f</kbd> ขึ้นตัวอักษรบนทุกลิงก์ พิมพ์ตามแล้วเปิด · <kbd>F</kbd> เปิดใน tab ใหม่ · <kbd>j</kbd> / <kbd>k</kbd> เลื่อน · <kbd>J</kbd> / <kbd>K</kbd> สลับ tab · <kbd>o</kbd> เปิด URL หรือค้นหา · <kbd>x</kbd> ปิด tab · <kbd>/</kbd> ค้นในหน้า · <kbd>gi</kbd> เข้าช่องกรอกแรก</li>
+      <li>หน้าที่ต้องพิมพ์เยอะ (Gmail, Slack web) ให้กด <kbd>i</kbd> เข้า insert mode หรือใส่ไว้ใน excluded URLs ของ Vimium</li>
+    </ol>
+    <p class="revert">ย้อนกลับ: ถอด extension ออก · ตอน scan เครื่องนี้ยังไม่มี Vimium ในทุก browser</p>
+  </div>
+
+  <h3>3. ต่อ app — ที่ใช้อยู่จริงในเครื่องนี้</h3>
+  <div class="cards">
+    <div class="card">
+      <h4>Zed (keymap default ของ Zed)</h4>
+      <ul>
+        <li><span class="tag">app</span><span><kbd>⌘P</kbd> เปิดไฟล์ · <kbd>⌘⇧P</kbd> command palette</span></li>
+        <li><span class="tag">app</span><span><kbd>⌘⇧F</kbd> ค้นทั้งโปรเจกต์ · <kbd>⌘⇧O</kbd> outline ของไฟล์</span></li>
+        <li><span class="tag">app</span><span><kbd>⌘J</kbd> terminal ล่าง · <kbd>⌘B</kbd> ซ่อน/โชว์ sidebar · <kbd>⌘⇧E</kbd> project panel</span></li>
+        <li><span class="tag kb">คีย์บอร์ด</span><span><kbd>nav</kbd>+<kbd>=</kbd> = F12 ไป definition · <kbd>⌃-</kbd> กลับ · <kbd>nav</kbd>+<kbd>8</kbd> = F8 ไป error ถัดไป</span></li>
+        <li><span class="tag kb">คีย์บอร์ด</span><span><kbd>nav</kbd>+<kbd>Caps</kbd> Caps Word พิมพ์ CONSTANT_NAME · <kbd>⌥</kbd>+nav+<kbd>H/L</kbd> กระโดดคำ</span></li>
+        <li><span class="tag">app</span><span>vim mode ปิดอยู่ (ตั้งใจ) — เปิดได้ที่ settings.json <code>"vim_mode": true</code> ถ้าอยากได้ hjkl ในตัวแก้</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Warp + tmux</h4>
+      <ul>
+        <li><span class="tag">app</span><span>Warp: <kbd>⌘P</kbd> command palette · <kbd>⌘T</kbd> tab ใหม่ · <kbd>⌘D</kbd> / <kbd>⌘⇧D</kbd> แบ่ง pane</span></li>
+        <li><span class="tag">app</span><span>Warp: <kbd>⌘↑</kbd> / <kbd>⌘↓</kbd> เลื่อนทีละ block · <kbd>⌃R</kbd> ค้นประวัติคำสั่ง</span></li>
+        <li><span class="tag">app</span><span>tmux (จาก .tmux.conf ของคุณ): <kbd>⌃A</kbd> แล้ว <kbd>h</kbd><kbd>j</kbd><kbd>k</kbd><kbd>l</kbd> ย้าย pane · <kbd>|</kbd> / <kbd>-</kbd> แบ่ง · <kbd>r</kbd> reload</span></li>
+        <li><span class="tag">app</span><span>tmux copy: <kbd>⌃A</kbd> <kbd>[</kbd> เข้า copy-mode (vi) · <kbd>y</kbd> ก๊อปเข้า clipboard ของ Mac</span></li>
+        <li><span class="tag kb">คีย์บอร์ด</span><span><kbd>⌃</kbd> อยู่มุมล่างซ้าย + <kbd>A</kbd> home row = prefix ถึงง่าย · encoder ซ้ายเลื่อน scrollback แทนเมาส์</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Arc (+ Vimium)</h4>
+      <ul>
+        <li><span class="tag">app</span><span><kbd>⌘T</kbd> command bar (เปิด URL / ค้นหา / สลับ tab) · <kbd>⌘S</kbd> ซ่อน/โชว์ sidebar</span></li>
+        <li><span class="tag">app</span><span><kbd>⌥⌘←</kbd> / <kbd>⌥⌘→</kbd> tab ก่อน/ถัดไป · <kbd>⌘⇧C</kbd> ก๊อป URL · <kbd>⌘1–8</kbd> ไป tab/favorite ตามเลข</span></li>
+        <li><span class="tag kb">คีย์บอร์ด</span><span><kbd>nav</kbd> ค้าง + หมุน encoder ขวา = สลับ tab</span></li>
+        <li><span class="tag kb">คีย์บอร์ด</span><span><kbd>mouse</kbd> ค้าง + <kbd>N</kbd> / <kbd>M</kbd> = Back / Forward · <kbd>Y U I O</kbd> scroll หน้า</span></li>
+        <li><span class="tag">app</span><span>Vimium (หลังลงตามข้อ 2.3): <kbd>f</kbd> คลิกลิงก์ · <kbd>j</kbd>/<kbd>k</kbd> เลื่อน · <kbd>J</kbd>/<kbd>K</kbd> สลับ tab</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Slack</h4>
+      <ul>
+        <li><span class="tag">app</span><span><kbd>⌘K</kbd> ไปห้อง/คน (พิมพ์ชื่อ) · <kbd>⌘⇧K</kbd> DM ทั้งหมด</span></li>
+        <li><span class="tag">app</span><span><kbd>⌘⇧A</kbd> ยังไม่ได้อ่านทั้งหมด · <kbd>⌘⇧T</kbd> threads · <kbd>⌥↑</kbd> / <kbd>⌥↓</kbd> ห้องก่อน/ถัดไป</span></li>
+        <li><span class="tag">app</span><span><kbd>↑</kbd> ในช่องพิมพ์ = แก้ข้อความล่าสุดของตัวเอง · <kbd>Esc</kbd> mark ห้องว่าอ่านแล้ว</span></li>
+        <li><span class="tag kb">คีย์บอร์ด</span><span><kbd>nav</kbd>+<kbd>K</kbd> = ↑ ใช้แก้ข้อความล่าสุดได้โดยไม่ยกมือ · <kbd>⌃Space</kbd> สลับไทย/อังกฤษก่อนพิมพ์</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>macOS ทั่วไป</h4>
+      <ul>
+        <li><span class="tag kb">คีย์บอร์ด</span><span><kbd>nav</kbd>+<kbd>E</kbd> สลับ app ล่าสุด · <kbd>nav</kbd>+<kbd>Q</kbd> หน้าต่างถัดไปของ app · <kbd>nav</kbd>+<kbd>W</kbd> Mission Control</span></li>
+        <li><span class="tag kb">คีย์บอร์ด</span><span><kbd>nav</kbd>+<kbd>A</kbd>/<kbd>D</kbd> ย้าย Space · <kbd>adjust</kbd>+<kbd>L</kbd> ล็อกจอ · <kbd>nav</kbd>+<kbd>PgUp</kbd>/<kbd>PgDn</kbd>/<kbd>⌘C</kbd> ถ่ายจอ ⌘⇧4 / 3 / 5</span></li>
+        <li><span class="tag">app</span><span><kbd>⌘Space</kbd> Spotlight (กด ⌘ thumb + Space ข้างกัน) · <kbd>⌘,</kbd> settings ของ app · <kbd>⌘⌥Esc</kbd> force quit</span></li>
+        <li><span class="tag">app</span><span>หลังเปิด Keyboard navigation (2.1): <kbd>Tab</kbd> / <kbd>⇧Tab</kbd> ไล่ปุ่มใน dialog · <kbd>Space</kbd> กด · <kbd>⌃F2</kbd> เข้าเมนูบาร์ (nav+2 ค้าง ⌃)</span></li>
+        <li><span class="tag">app</span><span>Finder: <kbd>⌘↑</kbd> ขึ้นโฟลเดอร์ · <kbd>⌘↓</kbd> / <kbd>⌘O</kbd> เปิด · <kbd>⌘⇧G</kbd> พิมพ์ path · <kbd>Space</kbd> Quick Look</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+</div>
 
 <footer>
   legend สร้างจาก <code>config/drift.keymap</code> + <code>config/drift.json</code> ทุกครั้งที่ build —
@@ -240,11 +413,12 @@
   // ── which layer is the board on? ─────────────────────────────────────────
   // A layer key emits no HID report, so the only evidence is what comes out
   // afterwards: a code that exists on exactly one non-base layer and nowhere on
-  // base can only have been produced by that layer being held. F-keys and arrows
-  // give `lower` away; `raise` is almost all BT, media and mouse behaviours,
-  // which a page either never receives or cannot tell from a real mouse, and
-  // `adjust` is entirely invisible. So this follows `lower` and little else —
-  // stated plainly next to the checkbox rather than pretended otherwise.
+  // base can only have been produced by that layer being held. F-keys, arrows
+  // and Home/End give `nav` away and Caps Lock gives `adjust` away; `game` is
+  // all pass-through and `mouse` emits pointer events a page cannot tell from a
+  // real mouse (wheel events are not used on purpose: the left encoder and a
+  // trackpad scrolling this page fire the same ones). What is and is not
+  // followable is computed from the data and printed next to the checkbox.
   const baseCodes = new Set(D.layers.base.map((b) => b.code).filter(Boolean));
   const layerHint = new Map();
   {
@@ -317,6 +491,13 @@
     });
     $("glossary").innerHTML = rows.join("") ||
       "<dt>—</dt><dd>layer นี้ไม่มีปุ่มที่ต้องอธิบายเพิ่ม</dd>";
+
+    // Encoders are not slots, and what a turn does changes per layer too.
+    $("enc-layer").textContent = layer;
+    const enc = (D.layers_encoders && D.layers_encoders[layer]) || D.encoders || [];
+    $("enc-prod").innerHTML = enc.map((e) =>
+      `<li><b>${esc(e.label)}</b> — หมุนขึ้น/ตามเข็ม: ${esc(e.cw)} · หมุนลง/ทวนเข็ม: ${esc(e.ccw)}</li>`
+    ).join("");
   }
 
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) =>
@@ -382,7 +563,7 @@
 
     const slot = mode === "test"
       ? (wrongFirmware ? null : codeToSlot.get(ev.code))
-      : slotOnCurrentLayer(ev.code);
+      : slotOnCurrentLayer(ev);
     if (slot != null && slot >= 0) {
       cells[slot].classList.add("down");
       if (mode === "test") {
@@ -411,11 +592,24 @@
   addEventListener("blur", () => cells.forEach((el) => el.classList.remove("down")));
 
   // In manual mode there is no Test Firmware to disambiguate with, so a code can
-  // belong to more than one slot. Light the first match and say so — never count it.
-  function slotOnCurrentLayer(code) {
+  // belong to more than one slot: KeyC is both the C key and the ⌘C key, Space is
+  // both space bars and the ⌃Space slot. The modifiers the browser saw decide:
+  // an exact chord wins, else the plain key (so ⌥ + nav + H still lights ←).
+  // Never counted — the page cannot know which layer the board was on.
+  const modsOf = (ev) => [ev.altKey && "Alt", ev.ctrlKey && "Control",
+                          ev.metaKey && "Meta", ev.shiftKey && "Shift"]
+    .filter(Boolean).join("+");                // same order the generator emits
+  function slotOnCurrentLayer(ev) {
     const L = D.layers[layer];
-    for (let i = 0; i < L.length; i++) if (L[i].code === code) return i;
-    return null;
+    const held = modsOf(ev);
+    let plain = null;
+    for (let i = 0; i < L.length; i++) {
+      const b = L[i];
+      if (b.code !== ev.code) continue;
+      if (b.mods.join("+") === held) return i;
+      if (!b.mods.length && plain == null) plain = i;
+    }
+    return plain;
   }
 
   function show(ev, slot) {
@@ -435,7 +629,8 @@
   }
 
   // ── chrome ───────────────────────────────────────────────────────────────
-  $("tabs").innerHTML = Object.keys(D.layers)
+  const LAYERS = D.layer_order || Object.keys(D.layers);
+  $("tabs").innerHTML = LAYERS
     .map((n) => `<button data-layer="${n}" aria-pressed="${n === layer}">${n}</button>`).join("");
   $("tabs").addEventListener("click", (e) => {
     const b = e.target.closest("button");
@@ -455,6 +650,7 @@
     $("mode-test").setAttribute("aria-pressed", mode === "test");
     $("panel-manual").hidden = mode !== "manual";
     $("panel-test").hidden = mode !== "test";
+    $("guide").hidden = mode === "test";
     if (mode === "test") {
       layer = "base";
       [...$("tabs").children].forEach((x) => x.setAttribute("aria-pressed", x.dataset.layer === "base"));
@@ -475,14 +671,20 @@
     paintState();
   };
   $("follow").onchange = () => { if (!$("follow").checked) setLayer(layer); };
-  $("follow-note").textContent =
-    "— ตามได้เฉพาะ lower (F1–F12 กับ arrow มีอยู่ layer เดียว) ส่วน raise/adjust เป็น BT/media/mouse ที่ browser มองไม่เห็น";
+  {
+    // Said from the data, not from memory: a layer is followable exactly when
+    // some code exists on it and nowhere else. Today that is nav (arrows, F-keys,
+    // Home/End) and adjust (Caps Lock, since base's Caps slot became ⌃Space);
+    // game is all pass-through and mouse emits nothing a page can attribute.
+    const can = new Set(layerHint.values());
+    const rest = LAYERS.filter((n) => n !== "base");
+    const yes = rest.filter((n) => can.has(n)), no = rest.filter((n) => !can.has(n));
+    $("follow-note").textContent =
+      `— ตามได้: ${yes.join(", ") || "ไม่มี"} (มีปุ่มที่อยู่เฉพาะ layer นั้น) · ตามไม่ได้: ${no.join(", ") || "ไม่มี"} ` +
+      "(ส่งค่าที่ browser มองไม่เห็น หรือแยกจาก base ไม่ออก)";
+  }
 
-  $("enc-prod").innerHTML = (D.encoders || []).map((e) =>
-    `<li><b>${esc(e.label)}</b> — หมุนขึ้น/ตามเข็ม: ${esc(e.cw)} · หมุนลง/ทวนเข็ม: ${esc(e.ccw)}</li>`
-  ).join("");
-
-  $("stamp").textContent = "สร้างจาก keymap " + D.source + " — 70 ช่อง, 4 layer";
+  $("stamp").textContent = `สร้างจาก keymap ${D.source} — ${D.layout.length} ช่อง, ${LAYERS.length} layer`;
   if (matchMedia("(pointer: coarse)").matches) $("coarse").hidden = false;
 
   paintLegends();
