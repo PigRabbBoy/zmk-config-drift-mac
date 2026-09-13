@@ -357,7 +357,7 @@
   $("mode-test").onclick = () => setMode("test");
   $("reset").onclick = () => { cov = blank(); lastDown.clear(); save(); paintState(); };
 
-  $("stamp").textContent = "สร้างจาก keymap เมื่อ " + D.generatedAt;
+  $("stamp").textContent = "สร้างจาก keymap " + D.source + " — 70 ช่อง, 4 layer";
   if (matchMedia("(pointer: coarse)").matches) $("coarse").hidden = false;
 
   paintLegends();

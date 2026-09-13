@@ -11,11 +11,11 @@ Both outputs come from this one pass on purpose: a hand-kept Test Firmware would
 eventually disagree with the page, and the page would call a healthy switch dead.
 """
 
+import hashlib
 import json
 import pathlib
 import re
 import sys
-from datetime import datetime, timezone
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 LAYOUT = ROOT / "config" / "drift.json"
@@ -228,8 +228,12 @@ def main():
         l_cw=l_cw, l_ccw=l_ccw, r_cw=r_cw, r_ccw=r_ccw))
 
     # --- page data ------------------------------------------------------------
+    # A fingerprint of the inputs, not a timestamp: the output has to be
+    # byte-identical on a rebuild or the staleness check in CI can never pass.
+    digest = hashlib.sha256(LAYOUT.read_bytes() + KEYMAP.read_bytes()).hexdigest()[:8]
+
     data = {
-        "generatedAt": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+        "source": digest,
         "unit": 56,
         "layout": [
             {"x": k["x"], "y": k["y"], "r": k.get("r", 0),
