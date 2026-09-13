@@ -144,7 +144,7 @@ https://pigrabbboy.github.io/zmk-config-drift-mac/
 แต่ไม่นับคะแนน เพราะหน้าเว็บไม่มีทางรู้ว่า ZMK อยู่ layer ไหน — มันตาม layer ให้ได้เฉพาะที่ข้อมูลบอกได้
 (`nav` จากลูกศร/F-keys, `adjust` จาก Caps Lock) และบอกตรงๆ ว่า `game` กับ `mouse` ตามไม่ได้
 ด้านล่างมีคู่มือ "โหมดใช้งาน" และ "ลดการใช้เมาส์" — ฝั่งคีย์บอร์ด, setting macOS ที่ต้องตั้งเองครั้งเดียว
-(Keyboard navigation, App Shortcuts สำหรับ tile หน้าต่าง, Vimium), และ cheat-sheet ของ Zed / Warp+tmux / Arc / Slack
+(Keyboard navigation, App Shortcuts สำหรับ tile หน้าต่าง, Vimium), และ cheat-sheet ของ Zed / Warp+tmux / Arc / Slack / Claude Code / Claude Desktop / OpenCode
 
 **โหมดทดสอบบอร์ด** — ไล่ให้ครบทั้ง 70 สวิตช์ + หมุน encoder 4 ทิศ นับแยกซ้าย/ขวา
 (แต่ละครึ่งคุยกับ dongle แยกกัน ถ้าครึ่งไหนหลุดจะตายทั้ง 35 ช่องพร้อมกัน — ตัวเลขแยกทำให้เห็นทันที)
