@@ -91,6 +91,60 @@ MOD_WRAP = {"LG": ("⌘", "Meta"), "RG": ("⌘", "Meta"), "LC": ("⌃", "Control
             "RC": ("⌃", "Control"), "LA": ("⌥", "Alt"), "RA": ("⌥", "Alt"),
             "LS": ("⇧", "Shift"), "RS": ("⇧", "Shift")}
 
+# Thai plain-language notes for anything a person cannot read off the legend.
+# Letters, digits and punctuation get nothing on purpose — an entry here is a
+# promise that the key needs explaining.
+NOTES = {
+    "&bootloader": "เข้าโหมด bootloader ของเครื่องที่กด — drive NICENANO จะโผล่ขึ้นมาให้ลากไฟล์ .uf2 ลงไป",
+    "&sys_reset": "รีสตาร์ทบอร์ด เหมือนถอดแบตเสียบใหม่ ไม่ได้เข้า bootloader",
+    "&trans": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)",
+    "&none": "ไม่ผูกอะไรไว้ กดแล้วไม่เกิดอะไรขึ้น",
+    "&bt BT_CLR": "ลบการจับคู่ของ Bluetooth profile ที่ใช้อยู่ตอนนี้ ใช้ตอนจับคู่ใหม่ไม่ติด",
+    "&bt BT_CLR_ALL": "ลบการจับคู่ของทุก profile พร้อมกัน",
+    "&out OUT_USB": "บังคับส่งสัญญาณออกทางสาย USB อย่างเดียว",
+    "&out OUT_BLE": "บังคับส่งสัญญาณออกทาง Bluetooth อย่างเดียว",
+    "&out OUT_TOG": "สลับไปมาระหว่าง USB กับ Bluetooth",
+    "&mkp LCLK": "คลิกซ้ายของเมาส์",
+    "&mkp RCLK": "คลิกขวาของเมาส์",
+    "&mkp MCLK": "คลิกล้อกลางของเมาส์",
+    "&msc SCRL_UP": "เลื่อนหน้าขึ้น เหมือนหมุนล้อเมาส์",
+    "&msc SCRL_DOWN": "เลื่อนหน้าลง",
+    "&kp C_MUTE": "ปิด/เปิดเสียง — ช่องนี้คือการกด encoder ลงไป ไม่ใช่ปุ่มธรรมดา",
+    "&kp C_BRI_UP": "เพิ่มความสว่างหน้าจอ",
+    "&kp C_BRI_DN": "ลดความสว่างหน้าจอ",
+    "&kp C_PREV": "เพลง/วิดีโอ ก่อนหน้า",
+    "&kp C_PP": "เล่น / หยุดชั่วคราว",
+    "&kp C_NEXT": "เพลง/วิดีโอ ถัดไป",
+    "&kp LG(C)": "⌘C คัดลอก — บน Mac ต้องเป็น ⌘ ไม่ใช่ Ctrl",
+    "&kp LG(V)": "⌘V วาง",
+    "&kp LG(SPACE)": "⌘Space เปิด Spotlight",
+    "&kp LC(SPACE)": "⌃Space สลับ input source ไทย ↔ อังกฤษ",
+    "&kp LG(LEFT)": "⌘← ไปต้นบรรทัด (แทนปุ่ม Home ที่คีย์บอร์ด Mac ไม่มี)",
+    "&kp LG(RIGHT)": "⌘→ ไปท้ายบรรทัด (แทนปุ่ม End)",
+    "&kp LG(LS(N3))": "⌘⇧3 ถ่ายภาพหน้าจอทั้งจอ เซฟลง Desktop ทันที",
+    "&kp LG(LS(N4))": "⌘⇧4 ถ่ายภาพหน้าจอแบบลากเลือกพื้นที่",
+    "&kp LG(LS(N5))": "⌘⇧5 เปิดแถบเครื่องมือถ่ายภาพ/อัดวิดีโอหน้าจอ",
+    "&kp CAPS": "Caps Lock — ตั้งให้ใช้สลับภาษาได้ที่ System Settings › Keyboard › Input Sources",
+    "&kp PG_UP": "เลื่อนขึ้นหนึ่งหน้าจอ",
+    "&kp PG_DN": "เลื่อนลงหนึ่งหน้าจอ",
+    "&kp BSPC": "ปุ่ม delete ปกติของ Mac (⌫) ลบตัวอักษรทางซ้าย",
+    "&kp DEL": "forward delete (⌦) ลบตัวอักษรทางขวา — บนคีย์บอร์ด Apple ต้องกด Fn+Delete",
+    "&kp LGUI": "⌘ Command",
+    "&kp RGUI": "⌘ Command ตัวขวา",
+    "&kp LALT": "⌥ Option",
+    "&kp RALT": "⌥ Option ตัวขวา",
+    "&kp LCTRL": "⌃ Control",
+    "&kp RCTRL": "⌃ Control ตัวขวา",
+    "&kp LSHFT": "⇧ Shift",
+    "&kp RSHFT": "⇧ Shift ตัวขวา",
+    "&kp ESC": "Escape",
+    "&kp TAB": "Tab",
+    "&kp ENTER": "Return / Enter",
+    "&kp GRAVE": "` กับ ~ (ไทย: _ กับ %)",
+}
+MOVE_NOTE = {"MOVE_UP": "ขึ้น", "MOVE_DOWN": "ลง",
+             "MOVE_LEFT": "ไปทางซ้าย", "MOVE_RIGHT": "ไปทางขวา"}
+
 # Codes the Test Firmware may hand out, in a fixed order so a rebuild is stable.
 # F1-F12 are absent on purpose: macOS eats them unless the user has changed a
 # system preference, and a board checker must not depend on that (ADR-0001).
@@ -126,12 +180,34 @@ def read_layers(text):
     return layers
 
 
+def note_for(binding, behaviour, arg):
+    """A plain-Thai explanation, or "" when the legend already says everything."""
+    if binding in NOTES:
+        return NOTES[binding]
+    if behaviour == "&mo":
+        other = "raise" if arg == "LOWER" else "lower"
+        return (f"กดค้างเพื่อเข้า layer {arg.lower()} ปล่อยแล้วกลับ base — "
+                f"กดพร้อมกับ {other} จะเข้า layer adjust")
+    if behaviour == "&bt" and arg.startswith("BT_SEL"):
+        n = int(arg.split()[-1]) + 1
+        return (f"สลับไปใช้ Bluetooth profile ที่ {n} — dongle จำเครื่องได้ 5 เครื่องแยกกัน "
+                f"สลับเครื่องโดยไม่ต้องจับคู่ใหม่")
+    if behaviour == "&mmv":
+        return f"ขยับเคอร์เซอร์เมาส์{MOVE_NOTE.get(arg, arg)} — ใช้คีย์บอร์ดแทนเมาส์ได้"
+    if behaviour in ("&kpad", "&kpws"):
+        pair = "A กับ D" if behaviour == "&kpad" else "W กับ S"
+        return (f"ปุ่มธรรมดาสำหรับ host แต่ถ้ากด {pair} ค้างพร้อมกัน ตัวที่กดทีหลังชนะ "
+                f"(last-input-priority สำหรับเกม) — เก็บมาจาก keymap เดิมของ Timception")
+    return ""
+
+
 def describe(binding):
     """Turn one ZMK binding into what the page shows and what it listens for."""
     out = {"raw": binding, "en": binding, "en_shift": "", "th": "", "th_shift": "",
-           "code": None, "mods": []}
+           "code": None, "mods": [], "note": ""}
     behaviour, _, arg = binding.partition(" ")
     arg = arg.strip()
+    out["note"] = note_for(binding, behaviour, arg)
 
     # &kpad / &kpws are upstream's last-input-priority behaviours on WASD. To a
     # host they are ordinary key presses, so treat them exactly like &kp.
@@ -212,7 +288,25 @@ def main():
     layout = json.load(LAYOUT.open())["layouts"]["default_layout"]["layout"]
     if len(layout) != SLOTS:
         sys.exit(f"drift.json has {len(layout)} slots, expected {SLOTS}")
-    layers = read_layers(KEYMAP.read_text())
+    keymap_text = KEYMAP.read_text()
+    layers = read_layers(keymap_text)
+
+    # The two encoders are not Binding Slots, and which one does what is easy to
+    # get backwards: sensors are listed left-then-right in drift.dtsi, so the
+    # first sensor-binding is the LEFT encoder.
+    ARG_NOTE = {
+        "SCRL_UP": "เลื่อนหน้าขึ้น", "SCRL_DOWN": "เลื่อนหน้าลง",
+        "C_VOL_UP": "เพิ่มเสียง", "C_VOL_DN": "ลดเสียง",
+    }
+    sb = re.search(r"default_layer\s*\{.*?sensor-bindings\s*=\s*(.*?);",
+                   re.sub(r"//.*", "", keymap_text), re.S).group(1)
+    pairs = re.findall(r"<\s*&\w+\s+(\w+)\s+(\w+)\s*>", sb)
+    encoders = [
+        {"half": half, "label": label,
+         "cw": ARG_NOTE.get(a, a), "ccw": ARG_NOTE.get(b, b)}
+        for (a, b), half, label in zip(pairs, ("left", "right"),
+                                       ("encoder ซ้าย", "encoder ขวา"))
+    ]
 
     needed = SLOTS + 4
     if len(TEST_POOL) < needed:
@@ -248,6 +342,7 @@ def main():
             for k in layout
         ],
         "layers": {name: [describe(b) for b in layers[name]] for name in LAYER_ORDER},
+        "encoders": encoders,
         "test": {
             "slots": [CODES[k] for k in slot_keys],
             "encoders": [

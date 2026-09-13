@@ -37,8 +37,14 @@ Keymap default ของ upstream เขียนไว้สำหรับ Win
                             | ⌘ | SPACE | LOWER |         | RAISE | SPACE | ⌫ |
 ```
 
-Encoder: หมุน = Volume Up/Down, กด = Mute
-(หมุนบน layer อื่น = scroll ตาม `enc_scroll`)
+Encoder สองลูกทำคนละหน้าที่ (เรียงตาม `sensors = <&left_encoder &right_encoder>` ใน `drift.dtsi`):
+
+| | หมุน | กดลง |
+|---|---|---|
+| **encoder ซ้าย** | เลื่อนหน้าขึ้น/ลง (`&enc_scroll`) | ปิด/เปิดเสียง |
+| **encoder ขวา** | เพิ่ม/ลดเสียง (`&inc_dec_kp`) | ปิด/เปิดเสียง |
+
+ทำเหมือนกันทุก layer
 
 ### Lower layer (กด thumb ซ้ายในสุด)
 

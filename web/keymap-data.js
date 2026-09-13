@@ -573,7 +573,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "Escape",
-    "mods": []
+    "mods": [],
+    "note": "Escape"
    },
    {
     "raw": "&kp PG_UP",
@@ -582,7 +583,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "PageUp",
-    "mods": []
+    "mods": [],
+    "note": "เลื่อนขึ้นหนึ่งหน้าจอ"
    },
    {
     "raw": "&kp GRAVE",
@@ -591,7 +593,8 @@ window.DRIFT_DATA = {
     "th": "_",
     "th_shift": "%",
     "code": "Backquote",
-    "mods": []
+    "mods": [],
+    "note": "` กับ ~ (ไทย: _ กับ %)"
    },
    {
     "raw": "&kp N1",
@@ -600,7 +603,8 @@ window.DRIFT_DATA = {
     "th": "ๅ",
     "th_shift": "+",
     "code": "Digit1",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp N2",
@@ -609,7 +613,8 @@ window.DRIFT_DATA = {
     "th": "/",
     "th_shift": "๑",
     "code": "Digit2",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp N3",
@@ -618,7 +623,8 @@ window.DRIFT_DATA = {
     "th": "-",
     "th_shift": "๒",
     "code": "Digit3",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp N4",
@@ -627,7 +633,8 @@ window.DRIFT_DATA = {
     "th": "ภ",
     "th_shift": "๓",
     "code": "Digit4",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp N5",
@@ -636,7 +643,8 @@ window.DRIFT_DATA = {
     "th": "ถ",
     "th_shift": "๔",
     "code": "Digit5",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp N6",
@@ -645,7 +653,8 @@ window.DRIFT_DATA = {
     "th": "ุ",
     "th_shift": "ู",
     "code": "Digit6",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp N7",
@@ -654,7 +663,8 @@ window.DRIFT_DATA = {
     "th": "ึ",
     "th_shift": "฿",
     "code": "Digit7",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp N8",
@@ -663,7 +673,8 @@ window.DRIFT_DATA = {
     "th": "ค",
     "th_shift": "๕",
     "code": "Digit8",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp N9",
@@ -672,7 +683,8 @@ window.DRIFT_DATA = {
     "th": "ต",
     "th_shift": "๖",
     "code": "Digit9",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp N0",
@@ -681,7 +693,8 @@ window.DRIFT_DATA = {
     "th": "จ",
     "th_shift": "๗",
     "code": "Digit0",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp MINUS",
@@ -690,7 +703,8 @@ window.DRIFT_DATA = {
     "th": "ข",
     "th_shift": "๘",
     "code": "Minus",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp EQUAL",
@@ -699,7 +713,8 @@ window.DRIFT_DATA = {
     "th": "ช",
     "th_shift": "๙",
     "code": "Equal",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp BSPC",
@@ -708,7 +723,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "Backspace",
-    "mods": []
+    "mods": [],
+    "note": "ปุ่ม delete ปกติของ Mac (⌫) ลบตัวอักษรทางซ้าย"
    },
    {
     "raw": "&kp LG(C)",
@@ -719,7 +735,8 @@ window.DRIFT_DATA = {
     "code": "KeyC",
     "mods": [
      "Meta"
-    ]
+    ],
+    "note": "⌘C คัดลอก — บน Mac ต้องเป็น ⌘ ไม่ใช่ Ctrl"
    },
    {
     "raw": "&kp PG_DN",
@@ -728,7 +745,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "PageDown",
-    "mods": []
+    "mods": [],
+    "note": "เลื่อนลงหนึ่งหน้าจอ"
    },
    {
     "raw": "&kp TAB",
@@ -737,7 +755,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "Tab",
-    "mods": []
+    "mods": [],
+    "note": "Tab"
    },
    {
     "raw": "&kp Q",
@@ -746,7 +765,8 @@ window.DRIFT_DATA = {
     "th": "ๆ",
     "th_shift": "๐",
     "code": "KeyQ",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kpws W",
@@ -755,7 +775,8 @@ window.DRIFT_DATA = {
     "th": "ไ",
     "th_shift": "\"",
     "code": "KeyW",
-    "mods": []
+    "mods": [],
+    "note": "ปุ่มธรรมดาสำหรับ host แต่ถ้ากด W กับ S ค้างพร้อมกัน ตัวที่กดทีหลังชนะ (last-input-priority สำหรับเกม) — เก็บมาจาก keymap เดิมของ Timception"
    },
    {
     "raw": "&kp E",
@@ -764,7 +785,8 @@ window.DRIFT_DATA = {
     "th": "ำ",
     "th_shift": "ฎ",
     "code": "KeyE",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp R",
@@ -773,7 +795,8 @@ window.DRIFT_DATA = {
     "th": "พ",
     "th_shift": "ฑ",
     "code": "KeyR",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp T",
@@ -782,7 +805,8 @@ window.DRIFT_DATA = {
     "th": "ะ",
     "th_shift": "ธ",
     "code": "KeyT",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp Y",
@@ -791,7 +815,8 @@ window.DRIFT_DATA = {
     "th": "ั",
     "th_shift": "ํ",
     "code": "KeyY",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp U",
@@ -800,7 +825,8 @@ window.DRIFT_DATA = {
     "th": "ี",
     "th_shift": "๊",
     "code": "KeyU",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp I",
@@ -809,7 +835,8 @@ window.DRIFT_DATA = {
     "th": "ร",
     "th_shift": "ณ",
     "code": "KeyI",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp O",
@@ -818,7 +845,8 @@ window.DRIFT_DATA = {
     "th": "น",
     "th_shift": "ฯ",
     "code": "KeyO",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp P",
@@ -827,7 +855,8 @@ window.DRIFT_DATA = {
     "th": "ย",
     "th_shift": "ญ",
     "code": "KeyP",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp LBKT",
@@ -836,7 +865,8 @@ window.DRIFT_DATA = {
     "th": "บ",
     "th_shift": "ฐ",
     "code": "BracketLeft",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp RBKT",
@@ -845,7 +875,8 @@ window.DRIFT_DATA = {
     "th": "ล",
     "th_shift": ",",
     "code": "BracketRight",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp BSLH",
@@ -854,7 +885,8 @@ window.DRIFT_DATA = {
     "th": "ฃ",
     "th_shift": "ฅ",
     "code": "Backslash",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp LSHFT",
@@ -863,7 +895,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "ShiftLeft",
-    "mods": []
+    "mods": [],
+    "note": "⇧ Shift"
    },
    {
     "raw": "&kp CAPS",
@@ -872,7 +905,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "CapsLock",
-    "mods": []
+    "mods": [],
+    "note": "Caps Lock — ตั้งให้ใช้สลับภาษาได้ที่ System Settings › Keyboard › Input Sources"
    },
    {
     "raw": "&kpad A",
@@ -881,7 +915,8 @@ window.DRIFT_DATA = {
     "th": "ฟ",
     "th_shift": "ฤ",
     "code": "KeyA",
-    "mods": []
+    "mods": [],
+    "note": "ปุ่มธรรมดาสำหรับ host แต่ถ้ากด A กับ D ค้างพร้อมกัน ตัวที่กดทีหลังชนะ (last-input-priority สำหรับเกม) — เก็บมาจาก keymap เดิมของ Timception"
    },
    {
     "raw": "&kpws S",
@@ -890,7 +925,8 @@ window.DRIFT_DATA = {
     "th": "ห",
     "th_shift": "ฆ",
     "code": "KeyS",
-    "mods": []
+    "mods": [],
+    "note": "ปุ่มธรรมดาสำหรับ host แต่ถ้ากด W กับ S ค้างพร้อมกัน ตัวที่กดทีหลังชนะ (last-input-priority สำหรับเกม) — เก็บมาจาก keymap เดิมของ Timception"
    },
    {
     "raw": "&kpad D",
@@ -899,7 +935,8 @@ window.DRIFT_DATA = {
     "th": "ก",
     "th_shift": "ฏ",
     "code": "KeyD",
-    "mods": []
+    "mods": [],
+    "note": "ปุ่มธรรมดาสำหรับ host แต่ถ้ากด A กับ D ค้างพร้อมกัน ตัวที่กดทีหลังชนะ (last-input-priority สำหรับเกม) — เก็บมาจาก keymap เดิมของ Timception"
    },
    {
     "raw": "&kp F",
@@ -908,7 +945,8 @@ window.DRIFT_DATA = {
     "th": "ด",
     "th_shift": "โ",
     "code": "KeyF",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp G",
@@ -917,7 +955,8 @@ window.DRIFT_DATA = {
     "th": "เ",
     "th_shift": "ฌ",
     "code": "KeyG",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp H",
@@ -926,7 +965,8 @@ window.DRIFT_DATA = {
     "th": "้",
     "th_shift": "็",
     "code": "KeyH",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp J",
@@ -935,7 +975,8 @@ window.DRIFT_DATA = {
     "th": "่",
     "th_shift": "๋",
     "code": "KeyJ",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp K",
@@ -944,7 +985,8 @@ window.DRIFT_DATA = {
     "th": "า",
     "th_shift": "ษ",
     "code": "KeyK",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp L",
@@ -953,7 +995,8 @@ window.DRIFT_DATA = {
     "th": "ส",
     "th_shift": "ศ",
     "code": "KeyL",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp SEMI",
@@ -962,7 +1005,8 @@ window.DRIFT_DATA = {
     "th": "ว",
     "th_shift": "ซ",
     "code": "Semicolon",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp SQT",
@@ -971,7 +1015,8 @@ window.DRIFT_DATA = {
     "th": "ง",
     "th_shift": ".",
     "code": "Quote",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp ENTER",
@@ -980,7 +1025,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "Enter",
-    "mods": []
+    "mods": [],
+    "note": "Return / Enter"
    },
    {
     "raw": "&kp LG(V)",
@@ -991,7 +1037,8 @@ window.DRIFT_DATA = {
     "code": "KeyV",
     "mods": [
      "Meta"
-    ]
+    ],
+    "note": "⌘V วาง"
    },
    {
     "raw": "&kp LCTRL",
@@ -1000,7 +1047,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "ControlLeft",
-    "mods": []
+    "mods": [],
+    "note": "⌃ Control"
    },
    {
     "raw": "&kp LALT",
@@ -1009,7 +1057,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "AltLeft",
-    "mods": []
+    "mods": [],
+    "note": "⌥ Option"
    },
    {
     "raw": "&kp Z",
@@ -1018,7 +1067,8 @@ window.DRIFT_DATA = {
     "th": "ผ",
     "th_shift": "(",
     "code": "KeyZ",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp X",
@@ -1027,7 +1077,8 @@ window.DRIFT_DATA = {
     "th": "ป",
     "th_shift": ")",
     "code": "KeyX",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp C",
@@ -1036,7 +1087,8 @@ window.DRIFT_DATA = {
     "th": "แ",
     "th_shift": "ฉ",
     "code": "KeyC",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp V",
@@ -1045,7 +1097,8 @@ window.DRIFT_DATA = {
     "th": "อ",
     "th_shift": "ฮ",
     "code": "KeyV",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp B",
@@ -1054,7 +1107,8 @@ window.DRIFT_DATA = {
     "th": "ิ",
     "th_shift": "ฺ",
     "code": "KeyB",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp C_MUTE",
@@ -1063,7 +1117,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "ปิด/เปิดเสียง — ช่องนี้คือการกด encoder ลงไป ไม่ใช่ปุ่มธรรมดา"
    },
    {
     "raw": "&kp C_MUTE",
@@ -1072,7 +1127,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "ปิด/เปิดเสียง — ช่องนี้คือการกด encoder ลงไป ไม่ใช่ปุ่มธรรมดา"
    },
    {
     "raw": "&kp N",
@@ -1081,7 +1137,8 @@ window.DRIFT_DATA = {
     "th": "ื",
     "th_shift": "์",
     "code": "KeyN",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp M",
@@ -1090,7 +1147,8 @@ window.DRIFT_DATA = {
     "th": "ท",
     "th_shift": "?",
     "code": "KeyM",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp COMMA",
@@ -1099,7 +1157,8 @@ window.DRIFT_DATA = {
     "th": "ม",
     "th_shift": "ฒ",
     "code": "Comma",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp DOT",
@@ -1108,7 +1167,8 @@ window.DRIFT_DATA = {
     "th": "ใ",
     "th_shift": "ฬ",
     "code": "Period",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp FSLH",
@@ -1117,7 +1177,8 @@ window.DRIFT_DATA = {
     "th": "ฝ",
     "th_shift": "ฦ",
     "code": "Slash",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp RSHFT",
@@ -1126,7 +1187,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "ShiftRight",
-    "mods": []
+    "mods": [],
+    "note": "⇧ Shift ตัวขวา"
    },
    {
     "raw": "&kp RGUI",
@@ -1135,7 +1197,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "MetaRight",
-    "mods": []
+    "mods": [],
+    "note": "⌘ Command ตัวขวา"
    },
    {
     "raw": "&kp DEL",
@@ -1144,7 +1207,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "Delete",
-    "mods": []
+    "mods": [],
+    "note": "forward delete (⌦) ลบตัวอักษรทางขวา — บนคีย์บอร์ด Apple ต้องกด Fn+Delete"
    },
    {
     "raw": "&kp LGUI",
@@ -1153,7 +1217,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "MetaLeft",
-    "mods": []
+    "mods": [],
+    "note": "⌘ Command"
    },
    {
     "raw": "&kp SPACE",
@@ -1162,7 +1227,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "Space",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&mo LOWER",
@@ -1171,7 +1237,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "กดค้างเพื่อเข้า layer lower ปล่อยแล้วกลับ base — กดพร้อมกับ raise จะเข้า layer adjust"
    },
    {
     "raw": "&mo RAISE",
@@ -1180,7 +1247,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "กดค้างเพื่อเข้า layer raise ปล่อยแล้วกลับ base — กดพร้อมกับ lower จะเข้า layer adjust"
    },
    {
     "raw": "&kp SPACE",
@@ -1189,7 +1257,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "Space",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp BSPC",
@@ -1198,7 +1267,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "Backspace",
-    "mods": []
+    "mods": [],
+    "note": "ปุ่ม delete ปกติของ Mac (⌫) ลบตัวอักษรทางซ้าย"
    }
   ],
   "lower": [
@@ -1209,7 +1279,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "เข้าโหมด bootloader ของเครื่องที่กด — drive NICENANO จะโผล่ขึ้นมาให้ลากไฟล์ .uf2 ลงไป"
    },
    {
     "raw": "&kp LG(LS(N4))",
@@ -1221,7 +1292,8 @@ window.DRIFT_DATA = {
     "mods": [
      "Meta",
      "Shift"
-    ]
+    ],
+    "note": "⌘⇧4 ถ่ายภาพหน้าจอแบบลากเลือกพื้นที่"
    },
    {
     "raw": "&kp GRAVE",
@@ -1230,7 +1302,8 @@ window.DRIFT_DATA = {
     "th": "_",
     "th_shift": "%",
     "code": "Backquote",
-    "mods": []
+    "mods": [],
+    "note": "` กับ ~ (ไทย: _ กับ %)"
    },
    {
     "raw": "&kp F1",
@@ -1239,7 +1312,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "F1",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp F2",
@@ -1248,7 +1322,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "F2",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp F3",
@@ -1257,7 +1332,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "F3",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp F4",
@@ -1266,7 +1342,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "F4",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp F5",
@@ -1275,7 +1352,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "F5",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp F6",
@@ -1284,7 +1362,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "F6",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp F7",
@@ -1293,7 +1372,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "F7",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp F8",
@@ -1302,7 +1382,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "F8",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp F9",
@@ -1311,7 +1392,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "F9",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp F10",
@@ -1320,7 +1402,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "F10",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp F11",
@@ -1329,7 +1412,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "F11",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp F12",
@@ -1338,7 +1422,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "F12",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp DEL",
@@ -1347,7 +1432,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "Delete",
-    "mods": []
+    "mods": [],
+    "note": "forward delete (⌦) ลบตัวอักษรทางขวา — บนคีย์บอร์ด Apple ต้องกด Fn+Delete"
    },
    {
     "raw": "&kp LG(LS(N5))",
@@ -1359,7 +1445,8 @@ window.DRIFT_DATA = {
     "mods": [
      "Meta",
      "Shift"
-    ]
+    ],
+    "note": "⌘⇧5 เปิดแถบเครื่องมือถ่ายภาพ/อัดวิดีโอหน้าจอ"
    },
    {
     "raw": "&kp LG(LS(N3))",
@@ -1371,7 +1458,8 @@ window.DRIFT_DATA = {
     "mods": [
      "Meta",
      "Shift"
-    ]
+    ],
+    "note": "⌘⇧3 ถ่ายภาพหน้าจอทั้งจอ เซฟลง Desktop ทันที"
    },
    {
     "raw": "&trans",
@@ -1380,7 +1468,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1389,7 +1478,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1398,7 +1488,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1407,7 +1498,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1416,7 +1508,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1425,7 +1518,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1434,7 +1528,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1443,7 +1538,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1452,7 +1548,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1461,7 +1558,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1470,7 +1568,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&kp LG(LEFT)",
@@ -1481,7 +1580,8 @@ window.DRIFT_DATA = {
     "code": "ArrowLeft",
     "mods": [
      "Meta"
-    ]
+    ],
+    "note": "⌘← ไปต้นบรรทัด (แทนปุ่ม Home ที่คีย์บอร์ด Mac ไม่มี)"
    },
    {
     "raw": "&kp LG(RIGHT)",
@@ -1492,7 +1592,8 @@ window.DRIFT_DATA = {
     "code": "ArrowRight",
     "mods": [
      "Meta"
-    ]
+    ],
+    "note": "⌘→ ไปท้ายบรรทัด (แทนปุ่ม End)"
    },
    {
     "raw": "&trans",
@@ -1501,7 +1602,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1510,7 +1612,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&kp LC(SPACE)",
@@ -1521,7 +1624,8 @@ window.DRIFT_DATA = {
     "code": "Space",
     "mods": [
      "Control"
-    ]
+    ],
+    "note": "⌃Space สลับ input source ไทย ↔ อังกฤษ"
    },
    {
     "raw": "&trans",
@@ -1530,7 +1634,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1539,7 +1644,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1548,7 +1654,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1557,7 +1664,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1566,7 +1674,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1575,7 +1684,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1584,7 +1694,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1593,7 +1704,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1602,7 +1714,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1611,7 +1724,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1620,7 +1734,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&kp UP",
@@ -1629,7 +1744,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "ArrowUp",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&trans",
@@ -1638,7 +1754,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1647,7 +1764,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1656,7 +1774,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1665,7 +1784,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1674,7 +1794,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1683,7 +1804,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1692,7 +1814,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1701,7 +1824,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&kp C_MUTE",
@@ -1710,7 +1834,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "ปิด/เปิดเสียง — ช่องนี้คือการกด encoder ลงไป ไม่ใช่ปุ่มธรรมดา"
    },
    {
     "raw": "&kp C_MUTE",
@@ -1719,7 +1844,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "ปิด/เปิดเสียง — ช่องนี้คือการกด encoder ลงไป ไม่ใช่ปุ่มธรรมดา"
    },
    {
     "raw": "&trans",
@@ -1728,7 +1854,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1737,7 +1864,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1746,7 +1874,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1755,7 +1884,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1764,7 +1894,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&kp LEFT",
@@ -1773,7 +1904,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "ArrowLeft",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp DOWN",
@@ -1782,7 +1914,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "ArrowDown",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&kp RIGHT",
@@ -1791,7 +1924,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "ArrowRight",
-    "mods": []
+    "mods": [],
+    "note": ""
    },
    {
     "raw": "&trans",
@@ -1800,7 +1934,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1809,7 +1944,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1818,7 +1954,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1827,7 +1964,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1836,7 +1974,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&kp DEL",
@@ -1845,7 +1984,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": "Delete",
-    "mods": []
+    "mods": [],
+    "note": "forward delete (⌦) ลบตัวอักษรทางขวา — บนคีย์บอร์ด Apple ต้องกด Fn+Delete"
    }
   ],
   "raise": [
@@ -1856,7 +1996,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "ลบการจับคู่ของ Bluetooth profile ที่ใช้อยู่ตอนนี้ ใช้ตอนจับคู่ใหม่ไม่ติด"
    },
    {
     "raw": "&bt BT_CLR_ALL",
@@ -1865,7 +2006,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "ลบการจับคู่ของทุก profile พร้อมกัน"
    },
    {
     "raw": "&trans",
@@ -1874,7 +2016,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&bt BT_SEL 0",
@@ -1883,7 +2026,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "สลับไปใช้ Bluetooth profile ที่ 1 — dongle จำเครื่องได้ 5 เครื่องแยกกัน สลับเครื่องโดยไม่ต้องจับคู่ใหม่"
    },
    {
     "raw": "&bt BT_SEL 1",
@@ -1892,7 +2036,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "สลับไปใช้ Bluetooth profile ที่ 2 — dongle จำเครื่องได้ 5 เครื่องแยกกัน สลับเครื่องโดยไม่ต้องจับคู่ใหม่"
    },
    {
     "raw": "&bt BT_SEL 2",
@@ -1901,7 +2046,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "สลับไปใช้ Bluetooth profile ที่ 3 — dongle จำเครื่องได้ 5 เครื่องแยกกัน สลับเครื่องโดยไม่ต้องจับคู่ใหม่"
    },
    {
     "raw": "&bt BT_SEL 3",
@@ -1910,7 +2056,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "สลับไปใช้ Bluetooth profile ที่ 4 — dongle จำเครื่องได้ 5 เครื่องแยกกัน สลับเครื่องโดยไม่ต้องจับคู่ใหม่"
    },
    {
     "raw": "&bt BT_SEL 4",
@@ -1919,7 +2066,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "สลับไปใช้ Bluetooth profile ที่ 5 — dongle จำเครื่องได้ 5 เครื่องแยกกัน สลับเครื่องโดยไม่ต้องจับคู่ใหม่"
    },
    {
     "raw": "&kp C_BRI_DN",
@@ -1928,7 +2076,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "ลดความสว่างหน้าจอ"
    },
    {
     "raw": "&kp C_BRI_UP",
@@ -1937,7 +2086,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "เพิ่มความสว่างหน้าจอ"
    },
    {
     "raw": "&trans",
@@ -1946,7 +2096,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -1955,7 +2106,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&kp C_PREV",
@@ -1964,7 +2116,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "เพลง/วิดีโอ ก่อนหน้า"
    },
    {
     "raw": "&kp C_PP",
@@ -1973,7 +2126,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "เล่น / หยุดชั่วคราว"
    },
    {
     "raw": "&kp C_NEXT",
@@ -1982,7 +2136,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "เพลง/วิดีโอ ถัดไป"
    },
    {
     "raw": "&bootloader",
@@ -1991,7 +2146,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "เข้าโหมด bootloader ของเครื่องที่กด — drive NICENANO จะโผล่ขึ้นมาให้ลากไฟล์ .uf2 ลงไป"
    },
    {
     "raw": "&kp LG(SPACE)",
@@ -2002,7 +2158,8 @@ window.DRIFT_DATA = {
     "code": "Space",
     "mods": [
      "Meta"
-    ]
+    ],
+    "note": "⌘Space เปิด Spotlight"
    },
    {
     "raw": "&trans",
@@ -2011,7 +2168,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2020,7 +2178,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2029,7 +2188,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2038,7 +2198,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2047,7 +2208,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2056,7 +2218,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2065,7 +2228,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2074,7 +2238,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2083,7 +2248,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2092,7 +2258,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2101,7 +2268,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2110,7 +2278,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&mkp MCLK",
@@ -2119,7 +2288,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "คลิกล้อกลางของเมาส์"
    },
    {
     "raw": "&msc SCRL_DOWN",
@@ -2128,7 +2298,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "เลื่อนหน้าลง"
    },
    {
     "raw": "&mkp RCLK",
@@ -2137,7 +2308,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "คลิกขวาของเมาส์"
    },
    {
     "raw": "&trans",
@@ -2146,7 +2318,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2155,7 +2328,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2164,7 +2338,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2173,7 +2348,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2182,7 +2358,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2191,7 +2368,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2200,7 +2378,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2209,7 +2388,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2218,7 +2398,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2227,7 +2408,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2236,7 +2418,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2245,7 +2428,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&mkp LCLK",
@@ -2254,7 +2438,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "คลิกซ้ายของเมาส์"
    },
    {
     "raw": "&mmv MOVE_UP",
@@ -2263,7 +2448,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "ขยับเคอร์เซอร์เมาส์ขึ้น — ใช้คีย์บอร์ดแทนเมาส์ได้"
    },
    {
     "raw": "&trans",
@@ -2272,7 +2458,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2281,7 +2468,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2290,7 +2478,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2299,7 +2488,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2308,7 +2498,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2317,7 +2508,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2326,7 +2518,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2335,7 +2528,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&kp C_MUTE",
@@ -2344,7 +2538,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "ปิด/เปิดเสียง — ช่องนี้คือการกด encoder ลงไป ไม่ใช่ปุ่มธรรมดา"
    },
    {
     "raw": "&kp C_MUTE",
@@ -2353,7 +2548,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "ปิด/เปิดเสียง — ช่องนี้คือการกด encoder ลงไป ไม่ใช่ปุ่มธรรมดา"
    },
    {
     "raw": "&trans",
@@ -2362,7 +2558,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2371,7 +2568,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2380,7 +2578,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2389,7 +2588,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2398,7 +2598,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&mmv MOVE_LEFT",
@@ -2407,7 +2608,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "ขยับเคอร์เซอร์เมาส์ไปทางซ้าย — ใช้คีย์บอร์ดแทนเมาส์ได้"
    },
    {
     "raw": "&mmv MOVE_DOWN",
@@ -2416,7 +2618,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "ขยับเคอร์เซอร์เมาส์ลง — ใช้คีย์บอร์ดแทนเมาส์ได้"
    },
    {
     "raw": "&mmv MOVE_RIGHT",
@@ -2425,7 +2628,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "ขยับเคอร์เซอร์เมาส์ไปทางขวา — ใช้คีย์บอร์ดแทนเมาส์ได้"
    },
    {
     "raw": "&trans",
@@ -2434,7 +2638,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2443,7 +2648,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2452,7 +2658,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2461,7 +2668,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2470,7 +2678,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2479,7 +2688,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    }
   ],
   "adjust": [
@@ -2490,7 +2700,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "เข้าโหมด bootloader ของเครื่องที่กด — drive NICENANO จะโผล่ขึ้นมาให้ลากไฟล์ .uf2 ลงไป"
    },
    {
     "raw": "&sys_reset",
@@ -2499,7 +2710,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "รีสตาร์ทบอร์ด เหมือนถอดแบตเสียบใหม่ ไม่ได้เข้า bootloader"
    },
    {
     "raw": "&trans",
@@ -2508,7 +2720,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&bt BT_SEL 0",
@@ -2517,7 +2730,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "สลับไปใช้ Bluetooth profile ที่ 1 — dongle จำเครื่องได้ 5 เครื่องแยกกัน สลับเครื่องโดยไม่ต้องจับคู่ใหม่"
    },
    {
     "raw": "&bt BT_SEL 1",
@@ -2526,7 +2740,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "สลับไปใช้ Bluetooth profile ที่ 2 — dongle จำเครื่องได้ 5 เครื่องแยกกัน สลับเครื่องโดยไม่ต้องจับคู่ใหม่"
    },
    {
     "raw": "&bt BT_SEL 2",
@@ -2535,7 +2750,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "สลับไปใช้ Bluetooth profile ที่ 3 — dongle จำเครื่องได้ 5 เครื่องแยกกัน สลับเครื่องโดยไม่ต้องจับคู่ใหม่"
    },
    {
     "raw": "&bt BT_SEL 3",
@@ -2544,7 +2760,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "สลับไปใช้ Bluetooth profile ที่ 4 — dongle จำเครื่องได้ 5 เครื่องแยกกัน สลับเครื่องโดยไม่ต้องจับคู่ใหม่"
    },
    {
     "raw": "&bt BT_SEL 4",
@@ -2553,7 +2770,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "สลับไปใช้ Bluetooth profile ที่ 5 — dongle จำเครื่องได้ 5 เครื่องแยกกัน สลับเครื่องโดยไม่ต้องจับคู่ใหม่"
    },
    {
     "raw": "&out OUT_USB",
@@ -2562,7 +2780,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "บังคับส่งสัญญาณออกทางสาย USB อย่างเดียว"
    },
    {
     "raw": "&out OUT_BLE",
@@ -2571,7 +2790,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "บังคับส่งสัญญาณออกทาง Bluetooth อย่างเดียว"
    },
    {
     "raw": "&out OUT_TOG",
@@ -2580,7 +2800,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "สลับไปมาระหว่าง USB กับ Bluetooth"
    },
    {
     "raw": "&trans",
@@ -2589,7 +2810,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2598,7 +2820,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2607,7 +2830,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&sys_reset",
@@ -2616,7 +2840,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "รีสตาร์ทบอร์ด เหมือนถอดแบตเสียบใหม่ ไม่ได้เข้า bootloader"
    },
    {
     "raw": "&bootloader",
@@ -2625,7 +2850,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "เข้าโหมด bootloader ของเครื่องที่กด — drive NICENANO จะโผล่ขึ้นมาให้ลากไฟล์ .uf2 ลงไป"
    },
    {
     "raw": "&trans",
@@ -2634,7 +2860,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2643,7 +2870,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2652,7 +2880,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2661,7 +2890,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2670,7 +2900,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2679,7 +2910,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2688,7 +2920,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2697,7 +2930,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2706,7 +2940,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2715,7 +2950,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2724,7 +2960,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2733,7 +2970,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2742,7 +2980,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2751,7 +2990,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2760,7 +3000,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2769,7 +3010,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2778,7 +3020,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2787,7 +3030,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2796,7 +3040,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2805,7 +3050,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2814,7 +3060,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2823,7 +3070,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2832,7 +3080,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2841,7 +3090,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2850,7 +3100,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2859,7 +3110,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2868,7 +3120,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2877,7 +3130,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2886,7 +3140,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2895,7 +3150,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2904,7 +3160,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2913,7 +3170,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2922,7 +3180,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2931,7 +3190,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2940,7 +3200,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2949,7 +3210,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2958,7 +3220,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -2967,7 +3230,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&kp C_MUTE",
@@ -2976,7 +3240,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "ปิด/เปิดเสียง — ช่องนี้คือการกด encoder ลงไป ไม่ใช่ปุ่มธรรมดา"
    },
    {
     "raw": "&kp C_MUTE",
@@ -2985,7 +3250,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "ปิด/เปิดเสียง — ช่องนี้คือการกด encoder ลงไป ไม่ใช่ปุ่มธรรมดา"
    },
    {
     "raw": "&trans",
@@ -2994,7 +3260,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -3003,7 +3270,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -3012,7 +3280,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -3021,7 +3290,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -3030,7 +3300,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -3039,7 +3310,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -3048,7 +3320,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -3057,7 +3330,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -3066,7 +3340,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -3075,7 +3350,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -3084,7 +3360,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -3093,7 +3370,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -3102,7 +3380,8 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    },
    {
     "raw": "&trans",
@@ -3111,10 +3390,25 @@ window.DRIFT_DATA = {
     "th": "",
     "th_shift": "",
     "code": null,
-    "mods": []
+    "mods": [],
+    "note": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)"
    }
   ]
  },
+ "encoders": [
+  {
+   "half": "left",
+   "label": "encoder ซ้าย",
+   "cw": "เลื่อนหน้าขึ้น",
+   "ccw": "เลื่อนหน้าลง"
+  },
+  {
+   "half": "right",
+   "label": "encoder ขวา",
+   "cw": "เพิ่มเสียง",
+   "ccw": "ลดเสียง"
+  }
+ ],
  "test": {
   "slots": [
    "KeyA",
