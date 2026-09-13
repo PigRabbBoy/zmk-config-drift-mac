@@ -35,7 +35,7 @@
 //   * Windows snipping shortcut replaced with macOS screenshot shortcuts on nav.
 //   * Right encoder press is play/pause; the left one still mutes.
 
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 3000  // default: 600 - pointer max speed on the mouse layer
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 120   // default: 10 - for encoder mouse-scroll to work
 
 #include <dt-bindings/zmk/mouse.h>
@@ -53,7 +53,7 @@
 
 // Pointer keys start slow and ramp up, so a tap nudges and a hold travels.
 &mmv {
-    time-to-max-speed-ms = <300>;
+    time-to-max-speed-ms = <200>;
     acceleration-exponent = <1>;
 };
 

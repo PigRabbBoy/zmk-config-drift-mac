@@ -76,7 +76,7 @@ Encoder สองลูกทำคนละหน้าที่ (เรีย�
 
 ### Mouse (thumb ขวาในค้าง)
 
-- `H J K L` ขยับเคอร์เซอร์ — `&mmv` เร่งความเร็ว (`time-to-max-speed-ms` 300, exponent 1) แตะสั้น = นิดเดียว กดค้าง = พุ่ง
+- `H J K L` ขยับเคอร์เซอร์ — `&mmv` เร่งความเร็ว (`MOVE_VAL` 3000, `time-to-max-speed-ms` 200, exponent 1) แตะสั้น = นิดเดียว กดค้าง = พุ่ง
 - `Y U I O` = scroll ← ↓ ↑ → (`&msc MOVE_X/Y(±10)` แยกจากค่า 120 ของ encoder)
 - Space ซ้าย = คลิกซ้าย · thumb ⌘ ซ้าย = คลิกขวา · `F` = คลิกกลาง · `N` / `M` = ปุ่มเมาส์ 4/5 (Back/Forward)
 - ⌘-click ใช้ `R⌘` · ⇧/⌥-click ใช้ปุ่มจริง
