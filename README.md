@@ -37,7 +37,7 @@ Keymap default ของ upstream เขียนไว้สำหรับ Win
 | 0 | `base` | — | พิมพ์งาน + shortcut macOS · ช่อง Caps ส่ง `⌃Space` สลับไทย/อังกฤษ |
 | 1 | `game` | `adjust` + `G` toggle (OLED ขึ้น `game`) | WASD แบบ last-input-priority, thumb ซ้ายนอก ⌘ → ⌥ ที่เหลือทะลุไป base |
 | 2 | `nav` | thumb ซ้ายในค้าง | HJKL ลูกศร, YUIO Home/PgDn/PgUp/End, F1–F12, ปุ่มจัดหน้าต่าง macOS, Caps Word, screenshot |
-| 3 | `mouse` | thumb ขวาในค้าง | HJKL ขยับเคอร์เซอร์, YUIO scroll, thumb ซ้ายคลิก, N/M = ปุ่มเมาส์ 4/5 |
+| 3 | `mouse` | thumb ขวาในค้าง | WASD ขยับเคอร์เซอร์, encoder scroll, thumb ซ้ายคลิก, N/M = ปุ่มเมาส์ 4/5 |
 | 4 | `adjust` | nav + mouse ค้างพร้อมกัน | Bluetooth, USB/BLE, media, ความสว่าง, Caps Lock จริง, ล็อกจอ, bootloader, toggle game |
 
 ### Base layer
@@ -52,10 +52,10 @@ Keymap default ของ upstream เขียนไว้สำหรับ Win
 
 Encoder สองลูกทำคนละหน้าที่ (เรียงตาม `sensors = <&left_encoder &right_encoder>` ใน `drift.dtsi`) และ**หมุนต่างกันตาม layer**:
 
-| | หมุน (base) | หมุน (nav ค้าง) | กดลง |
-|---|---|---|---|
-| **encoder ซ้าย** | เลื่อนหน้าขึ้น/ลง (`&enc_scroll`) | เลื่อนหน้าซ้าย/ขวา | ปิด/เปิดเสียง |
-| **encoder ขวา** | เพิ่ม/ลดเสียง (`&inc_dec_kp`) | สลับ tab `⌃Tab` / `⌃⇧Tab` | เล่น / หยุด |
+| | หมุน (base) | หมุน (nav ค้าง) | หมุน (mouse ค้าง) | กดลง |
+|---|---|---|---|---|
+| **encoder ซ้าย** | เลื่อนหน้าขึ้น/ลง (`&enc_scroll`) | เลื่อนหน้าซ้าย/ขวา | เลื่อนหน้าขึ้น/ลง | ปิด/เปิดเสียง |
+| **encoder ขวา** | เพิ่ม/ลดเสียง (`&inc_dec_kp`) | สลับ tab `⌃Tab` / `⌃⇧Tab` | เลื่อนหน้าซ้าย/ขวา | เล่น / หยุด |
 
 ### Game (toggle ด้วย adjust + G)
 
@@ -76,8 +76,8 @@ Encoder สองลูกทำคนละหน้าที่ (เรีย�
 
 ### Mouse (thumb ขวาในค้าง)
 
-- `H J K L` ขยับเคอร์เซอร์ — `&mmv` เร่งความเร็ว (`MOVE_VAL` 3000, `time-to-max-speed-ms` 200, exponent 1) แตะสั้น = นิดเดียว กดค้าง = พุ่ง
-- `Y U I O` = scroll ← ↓ ↑ → (`&msc MOVE_X/Y(±10)` แยกจากค่า 120 ของ encoder)
+- `W A S D` ขยับเคอร์เซอร์ ↑ ← ↓ → (มือซ้าย เหมือนเกม) — `&mmv` เร่งความเร็ว (`MOVE_VAL` 4500, `time-to-max-speed-ms` 150, exponent 1) แตะสั้น = นิดเดียว กดค้าง = พุ่ง
+- scroll ใช้ encoder: ซ้ายหมุน = ขึ้น/ลง · ขวาหมุน = ซ้าย/ขวา (เฉพาะตอนกด mouse ค้าง)
 - Space ซ้าย = คลิกซ้าย · thumb ⌘ ซ้าย = คลิกขวา · `F` = คลิกกลาง · `N` / `M` = ปุ่มเมาส์ 4/5 (Back/Forward)
 - ⌘-click ใช้ `R⌘` · ⇧/⌥-click ใช้ปุ่มจริง
 

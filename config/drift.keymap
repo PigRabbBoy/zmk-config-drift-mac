@@ -18,9 +18,10 @@
 //              Word / line jumps, selection and window tiling come from holding
 //              the real Option / Command / Shift / Control keys over the arrows,
 //              so those slots stay &trans on purpose.
-//   3 mouse  - hold the inner right thumb. HJKL moves the pointer, YUIO scrolls,
-//              left thumbs click, N/M are mouse buttons 4/5. Acceleration only,
-//              no precision layer yet.
+//   3 mouse  - hold the inner right thumb. WASD moves the pointer (left hand,
+//              like a game), the left thumbs click, F is middle click, N/M are
+//              mouse buttons 4/5, and the encoders scroll: left up/down, right
+//              left/right. Acceleration only, no precision layer yet.
 //   4 adjust - nav + mouse together. Bluetooth, USB/BLE output, media,
 //              brightness, real Caps Lock, screen lock, bootloader, game toggle.
 //
@@ -35,7 +36,7 @@
 //   * Windows snipping shortcut replaced with macOS screenshot shortcuts on nav.
 //   * Right encoder press is play/pause; the left one still mutes.
 
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 3000  // default: 600 - pointer max speed on the mouse layer
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 4500  // default: 600 - pointer max speed on the mouse layer
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 120   // default: 10 - for encoder mouse-scroll to work
 
 #include <dt-bindings/zmk/mouse.h>
@@ -53,7 +54,7 @@
 
 // Pointer keys start slow and ramp up, so a tap nudges and a hold travels.
 &mmv {
-    time-to-max-speed-ms = <200>;
+    time-to-max-speed-ms = <150>;
     acceleration-exponent = <1>;
 };
 
@@ -160,23 +161,23 @@
         mouse_layer {
             display-name = "mouse";
 
-            // Hold the inner right thumb. Key scroll uses its own small velocity;
-            // the 120 above is for the encoder's per-detent taps.
+            // Hold the inner right thumb. Pointer on WASD under the left hand, clicks on
+            // the left thumbs, scrolling on the encoders (left = up/down, right = left/right).
             // ---------------------------------------------------------------------------------------------------------------------------
-            // |       |      |       |     |     |     |     |     |               |SCR← |SCR↓ |SCR↑ |SCR→ |     |     |     |             |
-            //         |              |      |     |     |     |MCLK |     |        |  ←  |  ↓  |  ↑  |  →  |     |     |                 |
+            // |       |      |       |     | W↑  |     |     |     |               |     |     |     |     |     |     |     |             |
+            //         |              |      | A←  | S↓  | D→  |MCLK |     |        |     |     |     |     |     |     |                 |
             // |       |      |       |     |     |     |     |     | MUTE | | PLAY | MB4 | MB5 |     |     |     |     |     |             |
             //                                    |RCLK |LCLK |       |             |[mouse]|   |      |
 
             bindings = <
-&trans     &trans     &trans  &trans  &trans  &trans  &trans     &trans                            &trans           &trans           &trans          &trans           &trans  &trans  &trans  &trans
-&trans     &trans     &trans  &trans  &trans  &trans  &trans     &trans                            &msc MOVE_X(-10) &msc MOVE_Y(-10) &msc MOVE_Y(10) &msc MOVE_X(10)  &trans  &trans  &trans  &trans
-           &trans     &trans  &trans  &trans  &trans  &mkp MCLK  &trans                            &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_UP    &mmv MOVE_RIGHT  &trans  &trans  &trans
-&trans     &trans     &trans  &trans  &trans  &trans  &trans     &trans  &kp C_MUTE    &kp C_PP    &mkp MB4         &mkp MB5         &trans          &trans           &trans  &trans  &trans  &trans
-                                                      &mkp RCLK  &mkp LCLK  &trans                 &trans  &trans  &trans
+&trans  &trans  &trans  &trans          &trans          &trans           &trans     &trans                            &trans    &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans          &mmv MOVE_UP    &trans           &trans     &trans                            &trans    &trans    &trans  &trans  &trans  &trans  &trans  &trans
+        &trans  &trans  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp MCLK  &trans                            &trans    &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans          &trans          &trans           &trans     &trans  &kp C_MUTE    &kp C_PP    &mkp MB4  &mkp MB5  &trans  &trans  &trans  &trans  &trans  &trans
+                                                                         &mkp RCLK  &mkp LCLK  &trans                 &trans  &trans  &trans
             >;
 
-            sensor-bindings = <&enc_scroll SCRL_UP SCRL_DOWN>, <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings = <&enc_scroll SCRL_UP SCRL_DOWN>, <&enc_scroll SCRL_RIGHT SCRL_LEFT>;
         };
 
         adjust_layer {
