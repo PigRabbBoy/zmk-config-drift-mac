@@ -144,14 +144,14 @@
             // | ⌘⇧5   | ⌘⇧3  |       | ⌘`  | ^↑  |⌘TAB |     |     |               |HOME |PGDN |PGUP | END |     |     |     |             |
             //         |              |CAPSW | ^←  | ^↓  | ^→  |     |     |        |  ←  |  ↓  |  ↑  |  →  |     |     |                 |
             // |       |      |       |     |     |     |     |     | MUTE | | PLAY |     |     |     |     |     |     |     |             |
-            //                                    |     |     | [nav] |             |     |     | FWD DEL |
+            //                                    |     |⌘SPC | [nav] |             |     |⌘SPC | FWD DEL |     (⌘Space = Spotlight)
 
             bindings = <
 &trans          &kp LG(LS(N4))  &trans      &kp F1         &kp F2      &kp F3       &kp F4  &kp F5                            &kp F6    &kp F7     &kp F8     &kp F9     &kp F10  &kp F11  &kp F12  &kp DEL
 &kp LG(LS(N5))  &kp LG(LS(N3))  &trans      &kp LG(GRAVE)  &kp LC(UP)  &kp LG(TAB)  &trans  &trans                            &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &trans   &trans   &trans   &trans
                 &trans          &caps_word  &kp LC(LEFT)   &kp LC(DOWN) &kp LC(RIGHT) &trans &trans                           &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &trans   &trans   &trans
 &trans          &trans          &trans      &trans         &trans      &trans       &trans  &trans  &kp C_MUTE    &kp C_PP    &trans    &trans     &trans     &trans     &trans   &trans   &trans   &trans
-                                                                       &trans  &trans  &trans                                 &trans  &trans  &kp DEL
+                                                                       &trans  &kp LG(SPACE)  &trans                          &trans  &kp LG(SPACE)  &kp DEL
             >;
 
             sensor-bindings = <&enc_scroll SCRL_RIGHT SCRL_LEFT>, <&inc_dec_kp LC(TAB) LC(LS(TAB))>;

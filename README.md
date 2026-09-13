@@ -71,6 +71,7 @@ Encoder สองลูกทำคนละหน้าที่ (เรีย�
 - แถวเลข = `F1`–`F12`
 - มือซ้าย: `Q` ⌘` หน้าต่างถัดไป · `W` ⌃↑ Mission Control · `E` ⌘Tab · `A` / `D` ⌃← ⌃→ ย้าย Space · `S` ⌃↓ App Exposé
 - ช่อง Caps = `&caps_word` (พิมพ์ CONSTANT_NAME แล้วปิดเองเมื่อเจอ space)
+- Space (ข้างไหนก็ได้) = `⌘Space` Spotlight — nav ค้าง + Space
 - `⌘⇧4` / `⌘⇧3` / `⌘⇧5` screenshot ที่คอลัมน์ซ้ายนอก · `⌦` ที่มุมขวาบนและ thumb ⌫
 
 ### Mouse (thumb ขวาในค้าง)

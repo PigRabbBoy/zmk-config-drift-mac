@@ -118,6 +118,8 @@ NOTES = {
     "&kp C_NEXT": "เพลง/วิดีโอ ถัดไป",
     "&kp LG(C)": "⌘C คัดลอก — บน Mac ต้องเป็น ⌘ ไม่ใช่ Ctrl",
     "&kp LG(V)": "⌘V วาง",
+    "&kp LG(SPACE)": "⌘Space เปิด Spotlight — ค้นหา/เปิด app โดยไม่แตะเมาส์ · ในโหมดคู่มือปุ่มนี้ไม่สว่าง "
+                     "เพราะ macOS กินไปก่อนถึง browser",
     "&kp LC(SPACE)": "⌃Space สลับ input source ไทย ↔ อังกฤษ — อยู่บน keycap ที่สลักว่า Caps "
                      "(Caps Lock จริงย้ายไป layer adjust ช่องเดียวกัน) · ในโหมดคู่มือปุ่มนี้ไม่สว่าง "
                      "เพราะ macOS กินไปก่อนถึง browser",
