@@ -198,7 +198,7 @@
                                                                                   &trans  &trans  &trans                                &trans  &trans  &trans
             >;
 
-            sensor-bindings = <&enc_scroll SCRL_UP SCRL_DOWN>, <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings = <&inc_dec_kp C_BRI_UP C_BRI_DN>, <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
     };
 };

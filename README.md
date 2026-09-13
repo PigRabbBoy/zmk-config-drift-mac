@@ -38,7 +38,7 @@ Keymap default ของ upstream เขียนไว้สำหรับ Win
 | 1 | `game` | `adjust` + `G` toggle (OLED ขึ้น `game`) | WASD แบบ last-input-priority, thumb ซ้ายนอก ⌘ → ⌥ ที่เหลือทะลุไป base |
 | 2 | `nav` | thumb ซ้ายในค้าง | HJKL ลูกศร, YUIO Home/PgDn/PgUp/End, F1–F12, ปุ่มจัดหน้าต่าง macOS, Caps Word, screenshot |
 | 3 | `mouse` | thumb ขวาในค้าง | WASD ขยับเคอร์เซอร์, encoder scroll, thumb ซ้ายคลิก, N/M = ปุ่มเมาส์ 4/5 |
-| 4 | `adjust` | nav + mouse ค้างพร้อมกัน | Bluetooth, USB/BLE, media, ความสว่าง, Caps Lock จริง, ล็อกจอ, bootloader, toggle game |
+| 4 | `adjust` | nav + mouse ค้างพร้อมกัน | Bluetooth, USB/BLE, media, ความสว่าง (ปุ่ม + หมุน encoder ซ้าย), Caps Lock จริง, ล็อกจอ, bootloader, toggle game |
 
 ### Base layer
 
@@ -52,10 +52,10 @@ Keymap default ของ upstream เขียนไว้สำหรับ Win
 
 Encoder สองลูกทำคนละหน้าที่ (เรียงตาม `sensors = <&left_encoder &right_encoder>` ใน `drift.dtsi`) และ**หมุนต่างกันตาม layer**:
 
-| | หมุน (base) | หมุน (nav ค้าง) | หมุน (mouse ค้าง) | กดลง |
-|---|---|---|---|---|
-| **encoder ซ้าย** | เลื่อนหน้าขึ้น/ลง (`&enc_scroll`) | เลื่อนหน้าซ้าย/ขวา | เลื่อนหน้าขึ้น/ลง | ปิด/เปิดเสียง |
-| **encoder ขวา** | เพิ่ม/ลดเสียง (`&inc_dec_kp`) | สลับ tab `⌃Tab` / `⌃⇧Tab` | เลื่อนหน้าซ้าย/ขวา | เล่น / หยุด |
+| | หมุน (base) | หมุน (nav ค้าง) | หมุน (mouse ค้าง) | หมุน (adjust = กดสอง thumb) | กดลง |
+|---|---|---|---|---|---|
+| **encoder ซ้าย** | เลื่อนหน้าขึ้น/ลง (`&enc_scroll`) | เลื่อนหน้าซ้าย/ขวา | เลื่อนหน้าขึ้น/ลง | เพิ่ม/ลดความสว่างจอ (`C_BRI_UP` / `C_BRI_DN`) | ปิด/เปิดเสียง |
+| **encoder ขวา** | เพิ่ม/ลดเสียง (`&inc_dec_kp`) | สลับ tab `⌃Tab` / `⌃⇧Tab` | เลื่อนหน้าซ้าย/ขวา | เพิ่ม/ลดเสียง | เล่น / หยุด |
 
 ### Game (toggle ด้วย adjust + G)
 
