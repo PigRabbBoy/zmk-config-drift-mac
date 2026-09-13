@@ -33,5 +33,9 @@ include:
     shield: drift_right
     artifact-name: drift_right
 
+  # artifact-name is required here, not cosmetic: without it the default name is
+  # built from the board, and the "/" in nice_nano//zmk makes a path that does
+  # not exist, so the copy step fails after a clean compile.
   - board: nice_nano//zmk
     shield: settings_reset
+    artifact-name: settings_reset
