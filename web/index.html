@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drift V3 — คู่มือและตัวตรวจบอร์ด</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #16181d; --panel: #1e2127; --edge: #2c313a; --ink: #e6e8ec;
+    --dim: #8b93a1; --key: #262a32; --key-edge: #343a45;
+    --accent: #6c7cff; --ok: #3ecf8e; --warn: #e8b339; --bad: #e8615a;
+    --u: 56px;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f4f5f7; --panel: #fff; --edge: #dfe2e8; --ink: #1a1d23;
+      --dim: #6b7280; --key: #fff; --key-edge: #d5d9e0;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 14px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans Thai", sans-serif;
+  }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 20px 16px 64px; }
+  h1 { font-size: 19px; margin: 0; }
+  h2 { font-size: 15px; margin: 28px 0 10px; }
+  a { color: var(--accent); }
+  .sub { color: var(--dim); font-size: 12px; margin-top: 2px; }
+
+  header { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; justify-content: space-between; }
+  .modes { display: flex; gap: 4px; background: var(--panel); border: 1px solid var(--edge); border-radius: 9px; padding: 4px; }
+  .modes button, .tabs button {
+    font: inherit; color: var(--dim); background: none; border: 0;
+    padding: 6px 13px; border-radius: 6px; cursor: pointer;
+  }
+  .modes button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+  .tabs { display: flex; gap: 4px; margin: 18px 0 12px; }
+  .tabs button { border: 1px solid var(--edge); background: var(--panel); }
+  .tabs button[aria-pressed="true"] { border-color: var(--accent); color: var(--ink); }
+
+  .note { border: 1px solid var(--edge); border-left: 3px solid var(--accent); background: var(--panel);
+          border-radius: 8px; padding: 12px 14px; margin: 14px 0; }
+  .note.warn { border-left-color: var(--warn); }
+  .note h3 { margin: 0 0 6px; font-size: 14px; }
+  .note ol, .note ul { margin: 6px 0 0; padding-left: 20px; }
+  .note code { background: var(--key); border: 1px solid var(--key-edge); border-radius: 4px; padding: 1px 5px; }
+  [hidden] { display: none !important; }
+
+  .board-scroll { overflow-x: auto; padding: 8px 0 4px; }
+  .board { position: relative; }
+  .k {
+    position: absolute; width: calc(var(--u) - 6px); height: calc(var(--u) - 6px);
+    background: var(--key); border: 1px solid var(--key-edge); border-radius: 8px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 1px; overflow: hidden; transition: background .08s, border-color .08s;
+  }
+  .k .en { font-size: 13px; font-weight: 600; line-height: 1.1; text-align: center; }
+  .k .th { font-size: 12px; color: var(--dim); line-height: 1.1; }
+  .k.wide-label .en { font-size: 10px; font-weight: 500; }
+  .k.blank { opacity: .45; }
+  .k.down { background: var(--accent); border-color: var(--accent); }
+  .k.down .en, .k.down .th { color: #fff; }
+  .k.proven { background: color-mix(in srgb, var(--ok) 22%, var(--key)); border-color: var(--ok); }
+  .k.chatter { background: color-mix(in srgb, var(--warn) 26%, var(--key)); border-color: var(--warn); }
+  .k.unwatched { border-style: dashed; opacity: .6; }
+
+  .readout {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px;
+    background: var(--panel); border: 1px solid var(--edge); border-radius: 8px;
+    padding: 9px 12px; margin-top: 10px; color: var(--dim); min-height: 38px;
+  }
+  .readout b { color: var(--ink); font-weight: 600; }
+
+  .stats { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+  .stat { background: var(--panel); border: 1px solid var(--edge); border-radius: 9px; padding: 9px 14px; }
+  .stat .n { font-size: 19px; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: 11px; color: var(--dim); text-transform: uppercase; letter-spacing: .05em; }
+  .stat.done .n { color: var(--ok); }
+  button.plain { font: inherit; background: var(--panel); color: var(--ink);
+                 border: 1px solid var(--edge); border-radius: 7px; padding: 7px 14px; cursor: pointer; }
+
+  table.enc { border-collapse: collapse; margin-top: 6px; }
+  table.enc td { border: 1px solid var(--edge); padding: 6px 12px; }
+  table.enc td.state { color: var(--dim); }
+  table.enc td.state.ok { color: var(--ok); }
+
+  footer { margin-top: 40px; color: var(--dim); font-size: 12px; border-top: 1px solid var(--edge); padding-top: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div>
+    <h1>Drift V3 — คู่มือและตัวตรวจบอร์ด</h1>
+    <div class="sub" id="stamp"></div>
+  </div>
+  <div class="modes" role="group" aria-label="โหมด">
+    <button id="mode-manual" aria-pressed="true">คู่มือ</button>
+    <button id="mode-test" aria-pressed="false">ทดสอบบอร์ด</button>
+  </div>
+</header>
+
+<div class="note warn" id="coarse" hidden>
+  <h3>เครื่องนี้ไม่น่าจะมีคีย์บอร์ดต่ออยู่</h3>
+  อ่านคู่มือได้ตามปกติ แต่โหมดทดสอบบอร์ดต้องเปิดบนเครื่องที่ Drift V3 ต่ออยู่จริง
+</div>
+
+<!-- ───────────── manual ───────────── -->
+<section id="panel-manual">
+  <div class="tabs" id="tabs"></div>
+  <div class="note" id="manual-note">
+    กดปุ่มบนคีย์บอร์ดจริงแล้วปุ่มบนรูปจะสว่าง — <b>ไม่นับคะแนน</b> เพราะหน้าเว็บไม่มีทางรู้ว่า ZMK
+    กำลังอยู่ layer ไหน เห็นแต่ผลลัพธ์ที่ออกมา อยากได้ตัวเลขที่เชื่อได้ให้ไปโหมดทดสอบบอร์ด
+    <br>กด <code>⇧ Shift</code> ค้างเพื่อดู legend ชั้นที่สอง
+  </div>
+</section>
+
+<!-- ───────────── test ───────────── -->
+<section id="panel-test" hidden>
+  <div class="note warn">
+    <h3>โหมดนี้ต้อง flash Test Firmware ก่อน ไม่งั้นตัวเลขไม่มีความหมาย</h3>
+    Production Firmware มี 4 ช่องที่ browser มองไม่เห็นเลย (encoder push ×2, <code>lower</code>, <code>raise</code>)
+    และมี 3 คู่ที่ส่งค่าเหมือนกันจนแยกไม่ออก Test Firmware ทำให้ทั้ง 70 ช่อง + หมุน encoder 4 ทิศ
+    ส่งค่าไม่ซ้ำกันเลย
+    <ol>
+      <li>โหลด <code>firmware.zip</code> จาก GitHub Actions เอา <code>drift_test_left</code> / <code>drift_test_right</code></li>
+      <li>ต่อ USB-C → กด reset บน nice!nano 2 ครั้งเร็วๆ → drive <code>NICENANO</code> โผล่ → ลากไฟล์ลง ทำทั้งสองข้าง</li>
+      <li>กดให้ครบทุกช่อง หมุน encoder ทั้งสองข้างทั้งสองทิศ</li>
+      <li><b>flash <code>drift_left</code> / <code>drift_right</code> กลับ</b> — อย่าทิ้ง Test Firmware ไว้บนบอร์ด</li>
+    </ol>
+  </div>
+
+  <div class="note warn" id="thai-warn" hidden>
+    <h3>ยังไม่เห็นตัวอักษรไทยออกมาเลย</h3>
+    input source ตอนนี้น่าจะยังเป็นอังกฤษ กด <code>⌃ Space</code> สลับเป็นไทยก่อน ไม่งั้นทดสอบจนครบ
+    แล้วจะยังไม่ได้พิสูจน์สิ่งที่อยากรู้ — ว่าไทยออกจริงไหม
+  </div>
+
+  <div class="stats" id="stats"></div>
+
+  <h2>encoder</h2>
+  <table class="enc" id="enc"></table>
+
+  <p style="margin-top:18px"><button class="plain" id="reset">ล้างผลทดสอบ เริ่มรอบใหม่</button></p>
+</section>
+
+<div class="board-scroll">
+  <div class="board" id="board"></div>
+</div>
+<div class="readout" id="readout">ยังไม่มีการกดปุ่ม</div>
+
+<footer>
+  legend สร้างจาก <code>config/drift.keymap</code> + <code>config/drift.json</code> ทุกครั้งที่ build —
+  ดูวิธี flash, จับคู่ Bluetooth และรายละเอียด keymap ได้ที่
+  <a href="https://github.com/PigRabbBoy/zmk-config-drift-mac#readme">README</a> ·
+  เหตุผลเบื้องหลัง <a href="https://github.com/PigRabbBoy/zmk-config-drift-mac/tree/main/docs/adr">ADR</a>
+</footer>
+
+</div>
+
+<script src="keymap-data.js"></script>
+<script>
+(() => {
+  "use strict";
+  const D = window.DRIFT_DATA;
+  const U = D.unit;
+  const STORE = "drift.coverage.test.v1";
+  const CHATTER_MS = 50;
+  const THAI = /[฀-๿]/;
+
+  const $ = (id) => document.getElementById(id);
+  const board = $("board"), readout = $("readout");
+
+  // ── state ────────────────────────────────────────────────────────────────
+  let mode = "manual";
+  let layer = "base";
+  let shifted = false;
+  const cells = [];                       // one <div class="k"> per Binding Slot
+  const codeToSlot = new Map();           // Test Firmware code -> slot index
+  D.test.slots.forEach((c, i) => codeToSlot.set(c, i));
+  const encByCode = new Map();
+  D.test.encoders.forEach((e, i) => {
+    encByCode.set(e.cw, { enc: i, dir: "cw" });
+    encByCode.set(e.ccw, { enc: i, dir: "ccw" });
+  });
+
+  const blank = () => ({ slots: {}, encoders: {} });
+  let cov = blank();
+  try {
+    const saved = localStorage.getItem(STORE);
+    if (saved) cov = Object.assign(blank(), JSON.parse(saved));
+  } catch (_) { /* private window, or storage blocked — run without memory */ }
+  const save = () => { try { localStorage.setItem(STORE, JSON.stringify(cov)); } catch (_) {} };
+
+  const lastDown = new Map();
+  let sawThai = false;
+
+  // ── build the board ──────────────────────────────────────────────────────
+  const maxX = Math.max(...D.layout.map((k) => k.x)) + 1;
+  const maxY = Math.max(...D.layout.map((k) => k.y)) + 1.6;
+  board.style.width = maxX * U + "px";
+  board.style.height = maxY * U + "px";
+
+  D.layout.forEach((pos, i) => {
+    const el = document.createElement("div");
+    el.className = "k";
+    el.style.left = pos.x * U + "px";
+    el.style.top = pos.y * U + "px";
+    if (pos.r) {
+      el.style.transformOrigin = `${(pos.rx - pos.x) * U}px ${(pos.ry - pos.y) * U}px`;
+      el.style.transform = `rotate(${pos.r}deg)`;
+    }
+    el.innerHTML = '<span class="en"></span><span class="th"></span>';
+    board.appendChild(el);
+    cells.push(el);
+  });
+
+  function paintLegends() {
+    const L = D.layers[layer];
+    cells.forEach((el, i) => {
+      const b = L[i];
+      const en = shifted && b.en_shift ? b.en_shift : b.en;
+      const th = shifted && b.th_shift ? b.th_shift : b.th;
+      el.querySelector(".en").textContent = en;
+      el.querySelector(".th").textContent = th;
+      el.classList.toggle("wide-label", en.length > 3);
+      el.classList.toggle("blank", en === "" || en === "▽");
+      el.title = b.raw;
+    });
+  }
+
+  // ── painting per mode ────────────────────────────────────────────────────
+  function paintState() {
+    cells.forEach((el, i) => {
+      el.classList.remove("proven", "chatter", "unwatched");
+      if (mode !== "test") return;
+      const s = cov.slots[i];
+      if (s === "chatter") el.classList.add("chatter");
+      else if (s) el.classList.add("proven");
+    });
+    if (mode === "test") paintStats();
+  }
+
+  function paintStats() {
+    const tally = { left: [0, 0], right: [0, 0] };
+    D.layout.forEach((pos, i) => {
+      tally[pos.half][1]++;
+      if (cov.slots[i]) tally[pos.half][0]++;
+    });
+    const encDone = D.test.encoders.reduce(
+      (n, _, i) => n + (cov.encoders[i + ":cw"] ? 1 : 0) + (cov.encoders[i + ":ccw"] ? 1 : 0), 0);
+    const chatter = Object.values(cov.slots).filter((v) => v === "chatter").length;
+
+    const box = (n, total, label) =>
+      `<div class="stat${n === total ? " done" : ""}"><div class="n">${n}/${total}</div><div class="l">${label}</div></div>`;
+    $("stats").innerHTML =
+      box(tally.left[0], tally.left[1], "ครึ่งซ้าย") +
+      box(tally.right[0], tally.right[1], "ครึ่งขวา") +
+      box(encDone, 4, "ทิศหมุน encoder") +
+      (chatter ? `<div class="stat"><div class="n" style="color:var(--warn)">${chatter}</div><div class="l">ปุ่มเด้ง</div></div>` : "");
+
+    $("enc").innerHTML = D.test.encoders.map((e, i) => `<tr>
+        <td>${e.label}</td>
+        <td class="state${cov.encoders[i + ":cw"] ? " ok" : ""}">หมุนขวา ${cov.encoders[i + ":cw"] ? "✓" : "—"}</td>
+        <td class="state${cov.encoders[i + ":ccw"] ? " ok" : ""}">หมุนซ้าย ${cov.encoders[i + ":ccw"] ? "✓" : "—"}</td>
+      </tr>`).join("");
+  }
+
+  // ── keyboard ─────────────────────────────────────────────────────────────
+  // Everything is swallowed: Tab moves focus, Space scrolls, "/" opens quick
+  // find. None of that helps someone checking switches.
+  addEventListener("keydown", (ev) => {
+    if (ev.metaKey && (ev.key === "r" || ev.key === "R")) return;   // leave reload alone
+    ev.preventDefault();
+
+    if (ev.key === "Shift" && !shifted) { shifted = true; paintLegends(); }
+    if (THAI.test(ev.key)) { sawThai = true; $("thai-warn").hidden = true; }
+
+    const slot = mode === "test" ? codeToSlot.get(ev.code) : slotOnCurrentLayer(ev.code);
+    if (slot != null && slot >= 0) {
+      cells[slot].classList.add("down");
+      if (mode === "test") {
+        const now = performance.now();
+        const prev = lastDown.get(ev.code);
+        const bouncing = !ev.repeat && prev != null && now - prev < CHATTER_MS;
+        if (!ev.repeat) lastDown.set(ev.code, now);
+        cov.slots[slot] = bouncing ? "chatter" : (cov.slots[slot] || "proven");
+        save();
+        paintState();
+      }
+    }
+
+    if (mode === "test") {
+      const enc = encByCode.get(ev.code);
+      if (enc) { cov.encoders[enc.enc + ":" + enc.dir] = true; save(); paintStats(); }
+    }
+    show(ev, slot);
+  });
+
+  addEventListener("keyup", (ev) => {
+    ev.preventDefault();
+    if (ev.key === "Shift") { shifted = false; paintLegends(); }
+    cells.forEach((el) => el.classList.remove("down"));
+  });
+  addEventListener("blur", () => cells.forEach((el) => el.classList.remove("down")));
+
+  // In manual mode there is no Test Firmware to disambiguate with, so a code can
+  // belong to more than one slot. Light the first match and say so — never count it.
+  function slotOnCurrentLayer(code) {
+    const L = D.layers[layer];
+    for (let i = 0; i < L.length; i++) if (L[i].code === code) return i;
+    return null;
+  }
+
+  function show(ev, slot) {
+    const bits = [`<b>code</b> ${ev.code}`, `<b>key</b> ${ev.key === " " ? "␣" : ev.key}`];
+    if (slot != null && slot >= 0) {
+      const b = D.layers[layer][slot];
+      const half = D.layout[slot].half === "left" ? "ซ้าย" : "ขวา";
+      bits.push(`<b>ช่อง</b> #${slot} (${half}) ${b.en}${b.th ? " / " + b.th : ""}`);
+      if (mode === "test") bits.push(`<b>${b.raw}</b> เมื่อ flash Production`);
+    } else if (mode === "test") {
+      bits.push("ไม่ตรงกับช่องไหนเลย — flash Test Firmware แล้วหรือยัง");
+    }
+    readout.innerHTML = bits.join(" &nbsp;·&nbsp; ");
+  }
+
+  // ── chrome ───────────────────────────────────────────────────────────────
+  $("tabs").innerHTML = Object.keys(D.layers)
+    .map((n) => `<button data-layer="${n}" aria-pressed="${n === layer}">${n}</button>`).join("");
+  $("tabs").addEventListener("click", (e) => {
+    const b = e.target.closest("button");
+    if (!b) return;
+    layer = b.dataset.layer;
+    [...$("tabs").children].forEach((x) => x.setAttribute("aria-pressed", x === b));
+    paintLegends();
+  });
+
+  function setMode(next) {
+    mode = next;
+    $("mode-manual").setAttribute("aria-pressed", mode === "manual");
+    $("mode-test").setAttribute("aria-pressed", mode === "test");
+    $("panel-manual").hidden = mode !== "manual";
+    $("panel-test").hidden = mode !== "test";
+    if (mode === "test") {
+      layer = "base";
+      [...$("tabs").children].forEach((x) => x.setAttribute("aria-pressed", x.dataset.layer === "base"));
+      $("thai-warn").hidden = sawThai;
+      paintLegends();
+    }
+    paintState();
+  }
+  $("mode-manual").onclick = () => setMode("manual");
+  $("mode-test").onclick = () => setMode("test");
+  $("reset").onclick = () => { cov = blank(); lastDown.clear(); save(); paintState(); };
+
+  $("stamp").textContent = "สร้างจาก keymap เมื่อ " + D.generatedAt;
+  if (matchMedia("(pointer: coarse)").matches) $("coarse").hidden = false;
+
+  paintLegends();
+  paintState();
+})();
+</script>
+</body>
+</html>

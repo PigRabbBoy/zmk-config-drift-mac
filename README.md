@@ -63,11 +63,15 @@ Push repo นี้ขึ้น GitHub แล้ว GitHub Actions จะ build 
 gh repo create zmk-config-drift-mac --private --source=. --push
 ```
 
-โหลด artifact `firmware.zip` จากแท็บ Actions จะได้ 3 ไฟล์:
+โหลด artifact `firmware.zip` จากแท็บ Actions จะได้ 5 ไฟล์:
 
-- `drift_left-nice_nano_v2-zmk.uf2`
-- `drift_right-nice_nano_v2-zmk.uf2`
-- `settings_reset-nice_nano_v2-zmk.uf2`
+| ไฟล์ | ใช้ทำอะไร |
+|---|---|
+| `drift_left-nice_nano_v2-zmk.uf2` | Production Firmware ครึ่งซ้าย — ตัวที่ใช้พิมพ์จริง |
+| `drift_right-nice_nano_v2-zmk.uf2` | Production Firmware ครึ่งขวา |
+| `drift_test_left-nice_nano_v2-zmk.uf2` | **Test Firmware** ครึ่งซ้าย — flash เฉพาะตอนตรวจบอร์ด แล้ว flash Production กลับ |
+| `drift_test_right-nice_nano_v2-zmk.uf2` | Test Firmware ครึ่งขวา |
+| `settings_reset-nice_nano_v2-zmk.uf2` | ล้าง setting เมื่อสองครึ่งไม่คุยกัน |
 
 ## Flash
 
@@ -84,6 +88,43 @@ gh repo create zmk-config-drift-mac --private --source=. --push
 2. กด `BT1` (หรือ profile ที่ว่าง)
 3. macOS → System Settings → Bluetooth → เลือก **Drift V3**
 4. ถ้า Keyboard Setup Assistant เด้งขึ้นมาถามให้กดปุ่มข้าง Shift ซ้าย — ปิดไปแล้วเลือก **ANSI** เองที่ System Settings → Keyboard → Change Keyboard Type
+
+## เว็บคู่มือ + ตัวตรวจบอร์ด
+
+https://pigrabbboy.github.io/zmk-config-drift-mac/
+
+หน้าเดียว สองโหมด:
+
+**โหมดคู่มือ** — รูปคีย์บอร์ดวาดจากพิกัดจริงใน `config/drift.json` แสดง legend คู่ EN + ไทย (Kedmanee)
+ครบทั้ง 4 layer ซึ่ง keymap-editor ของ ZMK แสดงให้ไม่ได้ กด Shift ค้างเพื่อดู legend ชั้นที่สอง
+กดปุ่มจริงแล้วปุ่มบนรูปสว่าง แต่ไม่นับคะแนน เพราะหน้าเว็บไม่มีทางรู้ว่า ZMK อยู่ layer ไหน
+
+**โหมดทดสอบบอร์ด** — ไล่ให้ครบทั้ง 70 สวิตช์ + หมุน encoder 4 ทิศ นับแยกซ้าย/ขวา
+(ครึ่งขวาคุยผ่านครึ่งซ้าย ถ้าหลุดจะตายทั้งครึ่งพร้อมกัน — ตัวเลขแยกทำให้เห็นทันที)
+จับปุ่มเด้ง (chatter) ด้วย และจำผลไว้ใน localStorage ข้าม refresh
+
+โหมดนี้**ต้อง flash Test Firmware ก่อน**: Production Firmware มี 4 ช่องที่ browser มองไม่เห็นเลย
+(`&kp C_MUTE` ×2, `&mo LOWER`, `&mo RAISE`) และ 3 คู่ที่ส่งค่าเหมือนกันจนแยกไม่ออก
+(`SPACE`, `BSPC`, `C_MUTE`) — `SPACE` คร่อมสองครึ่งบอร์ดด้วย เหตุผลเต็มอยู่ใน
+[ADR-0001](./docs/adr/0001-separate-test-firmware.md)
+
+ขั้นตอน: flash `drift_test_left` / `drift_test_right` → เปิดเว็บโหมดทดสอบ → กดจนครบ →
+**flash `drift_left` / `drift_right` กลับ**
+
+## Generated files
+
+`config/drift_test.keymap` และ `web/keymap-data.js` **สร้างด้วยเครื่อง ห้ามแก้มือ**
+ทั้งคู่ออกมาจาก `tools/generate.py` ที่อ่าน `drift.keymap` + `drift.json`
+
+แก้ keymap แล้วต้องรัน:
+
+```bash
+python3 tools/generate.py
+```
+
+ทั้งสองไฟล์ commit เข้า repo เพราะ workflow build ของ ZMK checkout เองและแทรกขั้นตอน
+generate ก่อน build ไม่ได้ — job `verify-generated` ใน `.github/workflows/pages.yml`
+เป็นตัวกันลืม มันรัน generator ใหม่แล้ว fail ถ้าผลไม่ตรงกับที่ commit ไว้
 
 ## ตรวจว่าปุ่มส่งอะไรจริง
 

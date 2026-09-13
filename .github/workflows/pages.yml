@@ -1,0 +1,53 @@
+name: Publish board-check page
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  # The page and the Test Firmware both come out of tools/generate.py. The ZMK
+  # reusable build workflow checks the repo out itself and cannot run a step
+  # before building, so the generated files are committed — and this job is what
+  # keeps them honest. A keymap edit without a regenerate fails here rather than
+  # quietly shipping a page that reports healthy switches as dead.
+  verify-generated:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Regenerate
+        run: python3 tools/generate.py
+      - name: Fail if the committed output is stale
+        run: |
+          if ! git diff --exit-code -- config/drift_test.keymap web/keymap-data.js; then
+            echo "::error::config/drift_test.keymap or web/keymap-data.js is out of date."
+            echo "::error::Run 'python3 tools/generate.py' and commit the result."
+            exit 1
+          fi
+
+  deploy:
+    needs: verify-generated
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+      - id: deploy
+        uses: actions/deploy-pages@v4

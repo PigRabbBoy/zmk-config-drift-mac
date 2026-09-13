@@ -1,4 +1,3 @@
 .west/
 build/
-zephyr/
-!zephyr/module.yml
+__pycache__/
