@@ -2,7 +2,7 @@
 """Emit the web page's key data and the Test Firmware keymap from one source.
 
 Reads  config/drift.json    - the physical position of all 70 Binding Slots
-       config/drift.keymap  - the Production Firmware, four layers of 70
+       config/drift.keymap  - the Production Firmware, every layer 70 slots
 
 Writes web/keymap-data.js   - what the page draws and matches against
        config/drift_test.keymap - the Test Firmware (see docs/adr/0001)
@@ -24,7 +24,6 @@ OUT_JS = ROOT / "web" / "keymap-data.js"
 OUT_TEST = ROOT / "config" / "drift_test.keymap"
 
 SLOTS = 70
-LAYER_ORDER = ["base", "lower", "raise", "adjust"]
 
 # --- Kedmanee: the Thai character each physical position produces -------------
 # (unshifted, shifted), keyed by the US keycode that sits at that position.
@@ -99,38 +98,49 @@ NOTES = {
     "&sys_reset": "รีสตาร์ทบอร์ด เหมือนถอดแบตเสียบใหม่ ไม่ได้เข้า bootloader",
     "&trans": "โปร่งใส — ปุ่มนี้ไม่ได้ทำอะไรของตัวเอง ใช้ค่าจาก layer ที่อยู่ข้างล่าง (ปกติคือ base)",
     "&none": "ไม่ผูกอะไรไว้ กดแล้วไม่เกิดอะไรขึ้น",
+    "&caps_word": "Caps Word — ตัวอักษรถัดไปเป็นตัวใหญ่ทั้งหมด แล้วปิดเองเมื่อเจอ space หรือเครื่องหมาย "
+                  "(ขีดล่าง ตัวเลข ⌫ ไม่ตัด) เหมาะกับ CONSTANT_NAME ในโค้ด",
     "&bt BT_CLR": "ลบการจับคู่ของ Bluetooth profile ที่ใช้อยู่ตอนนี้ ใช้ตอนจับคู่ใหม่ไม่ติด",
     "&bt BT_CLR_ALL": "ลบการจับคู่ของทุก profile พร้อมกัน",
     "&out OUT_USB": "บังคับส่งสัญญาณออกทางสาย USB อย่างเดียว",
     "&out OUT_BLE": "บังคับส่งสัญญาณออกทาง Bluetooth อย่างเดียว",
     "&out OUT_TOG": "สลับไปมาระหว่าง USB กับ Bluetooth",
-    "&mkp LCLK": "คลิกซ้ายของเมาส์",
+    "&mkp LCLK": "คลิกซ้ายของเมาส์ — กดค้างแล้วขยับ = ลาก",
     "&mkp RCLK": "คลิกขวาของเมาส์",
     "&mkp MCLK": "คลิกล้อกลางของเมาส์",
-    "&msc SCRL_UP": "เลื่อนหน้าขึ้น เหมือนหมุนล้อเมาส์",
-    "&msc SCRL_DOWN": "เลื่อนหน้าลง",
-    "&kp C_MUTE": "ปิด/เปิดเสียง — ช่องนี้คือการกด encoder ลงไป ไม่ใช่ปุ่มธรรมดา",
+    "&mkp MB4": "ปุ่มเมาส์ 4 = ย้อนกลับ (Back) ใน browser และ Finder",
+    "&mkp MB5": "ปุ่มเมาส์ 5 = ไปข้างหน้า (Forward) ใน browser และ Finder",
+    "&kp C_MUTE": "ปิด/เปิดเสียง — ช่องนี้คือการกด encoder ซ้ายลงไป ไม่ใช่ปุ่มธรรมดา",
+    "&kp C_PP": "เล่น / หยุดชั่วคราว — ช่องตรงกลางบอร์ดคือการกด encoder ขวาลงไป",
     "&kp C_BRI_UP": "เพิ่มความสว่างหน้าจอ",
     "&kp C_BRI_DN": "ลดความสว่างหน้าจอ",
     "&kp C_PREV": "เพลง/วิดีโอ ก่อนหน้า",
-    "&kp C_PP": "เล่น / หยุดชั่วคราว",
     "&kp C_NEXT": "เพลง/วิดีโอ ถัดไป",
     "&kp LG(C)": "⌘C คัดลอก — บน Mac ต้องเป็น ⌘ ไม่ใช่ Ctrl",
     "&kp LG(V)": "⌘V วาง",
-    "&kp LG(SPACE)": "⌘Space เปิด Spotlight",
-    "&kp LC(SPACE)": "⌃Space สลับ input source ไทย ↔ อังกฤษ",
-    "&kp LG(LEFT)": "⌘← ไปต้นบรรทัด (แทนปุ่ม Home ที่คีย์บอร์ด Mac ไม่มี)",
-    "&kp LG(RIGHT)": "⌘→ ไปท้ายบรรทัด (แทนปุ่ม End)",
+    "&kp LC(SPACE)": "⌃Space สลับ input source ไทย ↔ อังกฤษ — อยู่บน keycap ที่สลักว่า Caps "
+                     "(Caps Lock จริงย้ายไป layer adjust ช่องเดียวกัน) · ในโหมดคู่มือปุ่มนี้ไม่สว่าง "
+                     "เพราะ macOS กินไปก่อนถึง browser",
+    "&kp LC(UP)": "⌃↑ Mission Control — เห็นทุกหน้าต่างและทุก Space",
+    "&kp LC(DOWN)": "⌃↓ App Exposé — หน้าต่างทั้งหมดของ app ที่ใช้อยู่",
+    "&kp LC(LEFT)": "⌃← ไป Space ทางซ้าย",
+    "&kp LC(RIGHT)": "⌃→ ไป Space ทางขวา",
+    "&kp LG(TAB)": "⌘Tab สลับไป app ที่ใช้ล่าสุด (กดค้างจะเปิดตัวเลือก app) · "
+                   "ในโหมดคู่มือปุ่มนี้ไม่สว่างเพราะ macOS กินไปก่อน",
+    "&kp LG(GRAVE)": "⌘` หน้าต่างถัดไปของ app เดียวกัน",
+    "&kp LG(LC(Q))": "⌃⌘Q ล็อกหน้าจอ",
     "&kp LG(LS(N3))": "⌘⇧3 ถ่ายภาพหน้าจอทั้งจอ เซฟลง Desktop ทันที",
     "&kp LG(LS(N4))": "⌘⇧4 ถ่ายภาพหน้าจอแบบลากเลือกพื้นที่",
     "&kp LG(LS(N5))": "⌘⇧5 เปิดแถบเครื่องมือถ่ายภาพ/อัดวิดีโอหน้าจอ",
-    "&kp CAPS": "Caps Lock — ตั้งให้ใช้สลับภาษาได้ที่ System Settings › Keyboard › Input Sources",
+    "&kp CAPS": "Caps Lock จริง — บน base ช่องนี้เป็น ⌃Space สลับภาษา ถ้าอยากล็อกตัวใหญ่จริงๆ มากดที่นี่",
     "&kp PG_UP": "เลื่อนขึ้นหนึ่งหน้าจอ",
     "&kp PG_DN": "เลื่อนลงหนึ่งหน้าจอ",
+    "&kp HOME": "ไปต้นเอกสาร/ต้นหน้า (ใน editor ส่วนใหญ่ = ต้นบรรทัด)",
+    "&kp END": "ไปท้ายเอกสาร/ท้ายหน้า (ใน editor ส่วนใหญ่ = ท้ายบรรทัด)",
     "&kp BSPC": "ปุ่ม delete ปกติของ Mac (⌫) ลบตัวอักษรทางซ้าย",
     "&kp DEL": "forward delete (⌦) ลบตัวอักษรทางขวา — บนคีย์บอร์ด Apple ต้องกด Fn+Delete",
     "&kp LGUI": "⌘ Command",
-    "&kp RGUI": "⌘ Command ตัวขวา",
+    "&kp RGUI": "⌘ Command ตัวขวา — ใช้ ⌘-click ในโหมด mouse ได้ เพราะ thumb ⌘ ซ้ายกลายเป็นคลิกขวา",
     "&kp LALT": "⌥ Option",
     "&kp RALT": "⌥ Option ตัวขวา",
     "&kp LCTRL": "⌃ Control",
@@ -141,9 +151,13 @@ NOTES = {
     "&kp TAB": "Tab",
     "&kp ENTER": "Return / Enter",
     "&kp GRAVE": "` กับ ~ (ไทย: _ กับ %)",
+    "&kp LEFT": "← กด ⌥ ค้าง = ถอยทีละคำ · ⌘ ค้าง = ต้นบรรทัด · ⇧ ค้าง = เลือกข้อความ · ⌃⌥ ค้าง = tile หน้าต่างซ้าย",
+    "&kp RIGHT": "→ กด ⌥ ค้าง = ไปทีละคำ · ⌘ ค้าง = ท้ายบรรทัด · ⇧ ค้าง = เลือกข้อความ · ⌃⌥ ค้าง = tile หน้าต่างขวา",
+    "&kp UP": "↑ กด ⌥ ค้าง = ต้นย่อหน้า · ⌘ ค้าง = ต้นเอกสาร · ⌃⌥ ค้าง = tile หน้าต่างบน",
+    "&kp DOWN": "↓ กด ⌥ ค้าง = ท้ายย่อหน้า · ⌘ ค้าง = ท้ายเอกสาร · ⌃⌥ ค้าง = tile หน้าต่างล่าง",
 }
-MOVE_NOTE = {"MOVE_UP": "ขึ้น", "MOVE_DOWN": "ลง",
-             "MOVE_LEFT": "ไปทางซ้าย", "MOVE_RIGHT": "ไปทางขวา"}
+MOVE_NOTE = {"up": "ขึ้น", "down": "ลง", "left": "ไปทางซ้าย", "right": "ไปทางขวา"}
+ARROW = {"up": "↑", "down": "↓", "left": "←", "right": "→"}
 
 # Codes the Test Firmware may hand out, in a fixed order so a rebuild is stable.
 # F1-F12 are absent on purpose: macOS eats them unless the user has changed a
@@ -160,56 +174,125 @@ TEST_POOL = (
 )
 
 
-def read_layers(text):
-    """Pull the four layers out of the keymap as lists of binding strings."""
-    text = re.sub(r"//.*", "", text)
-    layers = {}
-    for m in re.finditer(r"(\w+)_layer\s*\{.*?bindings\s*=\s*<(.*?)>;", text, re.S):
-        name, body = m.group(1), m.group(2)
-        if name == "default":  # ZMK calls it default_layer; we call it base
-            name = "base"
-        if name not in LAYER_ORDER:
-            continue
-        bindings = [" ".join(b.split()) for b in re.findall(r"&[^&>]+", body)]
+def strip_comments(text):
+    return re.sub(r"//.*", "", text)
+
+
+def read_keymap(raw):
+    """Layers in file order, the layer-number defines, and the conditional layer.
+
+    Returns (layers, layer_names, conditional) where
+      layers      = {display_name: [70 binding strings]}
+      encoders    = {display_name: [(cw, ccw), (cw, ccw)]}   left, then right
+      by_define   = {"NAV": "nav", ...}   so `&mo NAV` can be named on the page
+      conditional = {"if": ["nav", "mouse"], "then": "adjust"} or None
+    """
+    text = strip_comments(raw)
+    defines = {m.group(1): int(m.group(2))
+               for m in re.finditer(r"#define\s+([A-Z_]+)\s+(\d+)\s*$", text, re.M)}
+
+    heads = list(re.finditer(r"(\w+)_layer\s*\{\s*display-name\s*=\s*\"([^\"]+)\"\s*;", text))
+    if not heads:
+        sys.exit("no layers with a display-name found")
+    layers, encoders, order = {}, {}, []
+    for i, h in enumerate(heads):
+        name = h.group(2)
+        body = text[h.end(): heads[i + 1].start() if i + 1 < len(heads) else len(text)]
+        bm = re.search(r"bindings\s*=\s*<(.*?)>\s*;", body, re.S)
+        if not bm:
+            sys.exit(f"{name}: no bindings block")
+        bindings = [" ".join(b.split()) for b in re.findall(r"&[^&>]+", bm.group(1))]
         if len(bindings) != SLOTS:
             sys.exit(f"{name}: {len(bindings)} bindings, expected {SLOTS}")
+        sm = re.search(r"sensor-bindings\s*=\s*(.*?);", body, re.S)
+        if not sm:
+            sys.exit(f"{name}: no sensor-bindings (every layer must list both encoders)")
+        pairs = re.findall(r"<\s*&\w+\s+([\w()]+)\s+([\w()]+)\s*>", sm.group(1))
+        if len(pairs) != 2:
+            sys.exit(f"{name}: {len(pairs)} sensor bindings, expected 2 (left, right)")
         layers[name] = bindings
-    missing = [n for n in LAYER_ORDER if n not in layers]
-    if missing:
-        sys.exit(f"missing layers: {missing}")
-    return layers
+        encoders[name] = pairs
+        order.append(name)
+
+    by_define = {d: order[n] for d, n in defines.items() if n < len(order)}
+
+    conditional = None
+    cm = re.search(r"if-layers\s*=\s*<([^>]+)>\s*;\s*then-layer\s*=\s*<\s*(\w+)\s*>", text)
+    if cm:
+        conditional = {"if": [by_define.get(x, x) for x in cm.group(1).split()],
+                       "then": by_define.get(cm.group(2), cm.group(2))}
+    return layers, encoders, by_define, conditional
 
 
-def note_for(binding, behaviour, arg):
+def parse_move(arg):
+    """MOVE_UP / SCRL_DOWN / MOVE_X(-10) -> (axis-direction, magnitude or None)."""
+    m = re.fullmatch(r"(?:MOVE|SCRL)_(UP|DOWN|LEFT|RIGHT)", arg)
+    if m:
+        return m.group(1).lower(), None
+    m = re.fullmatch(r"MOVE_([XY])\((-?\d+)\)", arg)
+    if m:
+        axis, n = m.group(1), int(m.group(2))
+        if axis == "X":
+            return ("right" if n > 0 else "left"), abs(n)
+        return ("__y_pos" if n > 0 else "__y_neg"), abs(n)
+    return arg, None
+
+
+def scroll_dir(arg):
+    d, n = parse_move(arg)
+    # &msc: positive Y scrolls UP (ZMK docs), so MOVE_Y(10) is "up".
+    return {"__y_pos": "up", "__y_neg": "down"}.get(d, d), n
+
+
+def mouse_dir(arg):
+    d, n = parse_move(arg)
+    # &mmv: positive Y moves DOWN.
+    return {"__y_pos": "down", "__y_neg": "up"}.get(d, d), n
+
+
+def note_for(binding, behaviour, arg, by_define, conditional):
     """A plain-Thai explanation, or "" when the legend already says everything."""
     if binding in NOTES:
         return NOTES[binding]
     if behaviour == "&mo":
-        other = "raise" if arg == "LOWER" else "lower"
-        return (f"กดค้างเพื่อเข้า layer {arg.lower()} ปล่อยแล้วกลับ base — "
-                f"กดพร้อมกับ {other} จะเข้า layer adjust")
+        name = by_define.get(arg, arg.lower())
+        text = f"กดค้างเพื่อเข้า layer {name} ปล่อยแล้วกลับ layer เดิม"
+        if conditional and name in conditional["if"]:
+            others = [x for x in conditional["if"] if x != name]
+            text += f" — กดพร้อมกับ {' + '.join(others)} จะเข้า layer {conditional['then']}"
+        return text
+    if behaviour == "&tog":
+        name = by_define.get(arg, arg.lower())
+        return (f"เปิด/ปิดโหมด {name} ค้างไว้ — กดครั้งเดียวเปิด กดชุดเดียวกันอีกครั้งปิด "
+                f"จอ OLED บน dock โชว์ชื่อ {name} ตอนที่เปิดอยู่")
     if behaviour == "&bt" and arg.startswith("BT_SEL"):
         n = int(arg.split()[-1]) + 1
         return (f"สลับไปใช้ Bluetooth profile ที่ {n} — dongle จำเครื่องได้ 5 เครื่องแยกกัน "
                 f"สลับเครื่องโดยไม่ต้องจับคู่ใหม่")
     if behaviour == "&mmv":
-        return f"ขยับเคอร์เซอร์เมาส์{MOVE_NOTE.get(arg, arg)} — ใช้คีย์บอร์ดแทนเมาส์ได้"
+        d, _ = mouse_dir(arg)
+        return f"ขยับเคอร์เซอร์เมาส์{MOVE_NOTE.get(d, d)} — แตะสั้นขยับนิดเดียว กดค้างจะเร่งความเร็วขึ้น"
+    if behaviour == "&msc":
+        d, n = scroll_dir(arg)
+        speed = f" (ความเร็ว {n})" if n else ""
+        return f"เลื่อนหน้า{MOVE_NOTE.get(d, d)} เหมือนหมุนล้อเมาส์{speed}"
     if behaviour in ("&kpad", "&kpws"):
         pair = "A กับ D" if behaviour == "&kpad" else "W กับ S"
         return (f"ปุ่มธรรมดาสำหรับ host แต่ถ้ากด {pair} ค้างพร้อมกัน ตัวที่กดทีหลังชนะ "
-                f"(last-input-priority สำหรับเกม) — เก็บมาจาก keymap เดิมของ Timception")
+                f"(last-input-priority สำหรับเกม จาก module ของ Timception) — มีเฉพาะโหมด game "
+                f"บน base เป็นปุ่มธรรมดา")
     return ""
 
 
-def describe(binding):
+def describe(binding, by_define, conditional):
     """Turn one ZMK binding into what the page shows and what it listens for."""
     out = {"raw": binding, "en": binding, "en_shift": "", "th": "", "th_shift": "",
            "code": None, "mods": [], "note": ""}
     behaviour, _, arg = binding.partition(" ")
     arg = arg.strip()
-    out["note"] = note_for(binding, behaviour, arg)
+    out["note"] = note_for(binding, behaviour, arg, by_define, conditional)
 
-    # &kpad / &kpws are upstream's last-input-priority behaviours on WASD. To a
+    # &kpad / &kpws are Timception's last-input-priority behaviours on WASD. To a
     # host they are ordinary key presses, so treat them exactly like &kp.
     if behaviour in ("&kpad", "&kpws"):
         behaviour = "&kp"
@@ -223,7 +306,7 @@ def describe(binding):
             glyph, mod = MOD_WRAP[m.group(1)]
             mods.append((glyph, mod))
             inner = m.group(2)
-        out["mods"] = [m for _, m in mods]
+        out["mods"] = sorted(m for _, m in mods)
         prefix = "".join(g for g, _ in mods)
         out["code"] = CODES.get(inner)
         base = GLYPHS.get(inner, inner)
@@ -238,24 +321,39 @@ def describe(binding):
 
     labels = {
         "&trans": "▽", "&none": "", "&bootloader": "Boot", "&sys_reset": "Reset",
+        "&caps_word": "CapsW",
     }
     if binding in labels:
         out["en"] = labels[binding]
     elif behaviour == "&mo":
-        out["en"] = arg.lower()
+        out["en"] = by_define.get(arg, arg.lower())
+    elif behaviour == "&tog":
+        out["en"] = by_define.get(arg, arg.lower()) + " ⏻"
     elif behaviour == "&bt":
         out["en"] = {"BT_CLR": "BT clr", "BT_CLR_ALL": "BT clr all"}.get(
             arg, "BT" + str(int(arg.split()[-1]) + 1) if "BT_SEL" in arg else arg)
     elif behaviour == "&out":
         out["en"] = {"OUT_USB": "USB", "OUT_BLE": "BLE", "OUT_TOG": "USB/BLE"}.get(arg, arg)
     elif behaviour == "&mkp":
-        out["en"] = {"LCLK": "click L", "RCLK": "click R", "MCLK": "click M"}.get(arg, arg)
+        out["en"] = {"LCLK": "click L", "RCLK": "click R", "MCLK": "click M",
+                     "MB4": "back", "MB5": "fwd"}.get(arg, arg)
     elif behaviour == "&mmv":
-        out["en"] = "mouse " + {"MOVE_UP": "↑", "MOVE_DOWN": "↓",
-                                "MOVE_LEFT": "←", "MOVE_RIGHT": "→"}.get(arg, arg)
+        d, _ = mouse_dir(arg)
+        out["en"] = "mouse " + ARROW.get(d, d)
     elif behaviour == "&msc":
-        out["en"] = "scroll " + {"SCRL_UP": "↑", "SCRL_DOWN": "↓"}.get(arg, arg)
+        d, _ = scroll_dir(arg)
+        out["en"] = "scroll " + ARROW.get(d, d)
     return out
+
+
+# What the page says about each encoder argument. Both encoder halves share
+# these; the first sensor-binding in a layer is the LEFT encoder.
+ENC_NOTE = {
+    "SCRL_UP": "เลื่อนหน้าขึ้น", "SCRL_DOWN": "เลื่อนหน้าลง",
+    "SCRL_LEFT": "เลื่อนหน้าไปทางซ้าย", "SCRL_RIGHT": "เลื่อนหน้าไปทางขวา",
+    "C_VOL_UP": "เพิ่มเสียง", "C_VOL_DN": "ลดเสียง",
+    "LC(TAB)": "tab ถัดไป (⌃Tab)", "LC(LS(TAB))": "tab ก่อนหน้า (⌃⇧Tab)",
+}
 
 
 TEST_TEMPLATE = """// GENERATED by tools/generate.py - do not edit.
@@ -289,24 +387,19 @@ def main():
     if len(layout) != SLOTS:
         sys.exit(f"drift.json has {len(layout)} slots, expected {SLOTS}")
     keymap_text = KEYMAP.read_text()
-    layers = read_layers(keymap_text)
+    layers, encoders, by_define, conditional = read_keymap(keymap_text)
+    order = list(layers)
 
     # The two encoders are not Binding Slots, and which one does what is easy to
     # get backwards: sensors are listed left-then-right in drift.dtsi, so the
     # first sensor-binding is the LEFT encoder.
-    ARG_NOTE = {
-        "SCRL_UP": "เลื่อนหน้าขึ้น", "SCRL_DOWN": "เลื่อนหน้าลง",
-        "C_VOL_UP": "เพิ่มเสียง", "C_VOL_DN": "ลดเสียง",
-    }
-    sb = re.search(r"default_layer\s*\{.*?sensor-bindings\s*=\s*(.*?);",
-                   re.sub(r"//.*", "", keymap_text), re.S).group(1)
-    pairs = re.findall(r"<\s*&\w+\s+(\w+)\s+(\w+)\s*>", sb)
-    encoders = [
-        {"half": half, "label": label,
-         "cw": ARG_NOTE.get(a, a), "ccw": ARG_NOTE.get(b, b)}
-        for (a, b), half, label in zip(pairs, ("left", "right"),
-                                       ("encoder ซ้าย", "encoder ขวา"))
-    ]
+    def encoder_rows(pairs):
+        return [
+            {"half": half, "label": label,
+             "cw": ENC_NOTE.get(a, a), "ccw": ENC_NOTE.get(b, b)}
+            for (a, b), half, label in zip(pairs, ("left", "right"),
+                                           ("encoder ซ้าย", "encoder ขวา"))
+        ]
 
     needed = SLOTS + 4
     if len(TEST_POOL) < needed:
@@ -341,8 +434,12 @@ def main():
              "half": "left" if k["x"] < 10 else "right"}
             for k in layout
         ],
-        "layers": {name: [describe(b) for b in layers[name]] for name in LAYER_ORDER},
-        "encoders": encoders,
+        "layer_order": order,
+        "conditional": conditional,
+        "layers": {name: [describe(b, by_define, conditional) for b in layers[name]]
+                   for name in order},
+        "encoders": encoder_rows(encoders[order[0]]),
+        "layers_encoders": {name: encoder_rows(encoders[name]) for name in order},
         "test": {
             "slots": [CODES[k] for k in slot_keys],
             "encoders": [
@@ -360,7 +457,7 @@ def main():
 
     halves = [s["half"] for s in data["layout"]]
     print(f"{OUT_TEST.relative_to(ROOT)}: {SLOTS} slots + 4 encoder directions")
-    print(f"{OUT_JS.relative_to(ROOT)}: {len(LAYER_ORDER)} layers, "
+    print(f"{OUT_JS.relative_to(ROOT)}: {len(order)} layers ({', '.join(order)}), "
           f"{halves.count('left')} left / {halves.count('right')} right, "
           f"{len(TEST_POOL) - needed} spare test codes")
 
