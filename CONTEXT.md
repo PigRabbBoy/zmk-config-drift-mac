@@ -19,7 +19,11 @@ The third nice!nano, in a dock, that both Halves connect to and that alone talks
 _Avoid_: receiver, hub, dock
 
 **Layer**:
-One complete assignment of behaviours across all 70 Binding Slots. This keymap has four: `base`, `lower`, `raise`, `adjust`.
+One complete assignment of behaviours across all 70 Binding Slots, active only while its thumb key is held (or, for `adjust`, while two are). This keymap has five: `base`, `game`, `nav`, `mouse`, `adjust`. Higher-numbered Layers win where they overlap; a slot a Layer leaves transparent shows the Layer below.
+
+**Mode**:
+A Layer that is switched on by a toggle and stays on until toggled off, rather than held. There is one: `game`. What is on is shown on the Dongle's screen, never remembered. See [ADR-0003](./docs/adr/0003-game-is-a-toggled-overlay.md).
+_Avoid_: profile, preset, gaming layer
 
 **Legend Pair**:
 The English and Thai characters shown together on one Binding Slot, mirroring how the physical keycaps are printed. Thai follows the Kedmanee arrangement.
@@ -28,7 +32,7 @@ _Avoid_: label, caption
 ### The two firmwares
 
 **Production Firmware**:
-The Dongle build people actually type on, carrying `config/drift.keymap`. Contains behaviours that emit nothing over HID (`&mo`, `&bt`, `&out`) and repeats the same keycode on more than one Binding Slot, so a browser can neither see nor tell apart every switch under it.
+The Dongle build people actually type on, carrying `config/drift.keymap`. Contains behaviours that emit nothing over HID (`&mo`, `&tog`, `&bt`, `&out`) and repeats the same keycode on more than one Binding Slot, so a browser can neither see nor tell apart every switch under it. Every key on it is a plain key by decision — see [ADR-0004](./docs/adr/0004-plain-keys-stay-plain.md).
 
 **Test Firmware**:
 A throwaway Dongle build in which all 70 Binding Slots and all four encoder directions emit a distinct, plain keycode. Flashed only to answer "is this board still fully working", then replaced by the Production Firmware. See [ADR-0001](./docs/adr/0001-separate-test-firmware.md).
